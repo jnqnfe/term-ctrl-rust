@@ -1,0 +1,18 @@
+[package]
+name = "term-ctrl"
+version = "0.1.0"
+authors = ["Lyndon Brown <jnqnfe@gmail.com>"]
+license = "MIT/Apache-2.0"
+description = """
+Console/terminal control sequences
+"""
+keywords = ["terminal", "console"]
+homepage = "https://github.com/jnqnfe/term-ctrl-rust"
+repository = "https://github.com/jnqnfe/term-ctrl-rust"
+publish = false
+
+[lib]
+path = "lib.rs"
+
+[dependencies]
+libc = "0.2"
