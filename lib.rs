@@ -8,18 +8,65 @@
 // <http://opensource.org/licenses/MIT> and <http://www.apache.org/licenses/LICENSE-2.0>
 // respectively.
 
-extern crate libc;
+//!
+//! Text output to a console/terminal can (sometimes) be modified with certain (limited) effects
+//! (colors, boldness, etc). This is achieved by injecting a special sequence of characters into the
+//! output sent to the console/terminal. This special sequence will be interpreted by the
+//! console/terminal when it displays the output.
+//!
+//! This is not available on Windows (apparently), and should only be used otherwise when stdout is
+//! actually a tty (you wouldn't want these control sequences to exist in output that the user is
+//! piping into a text file or another program).
+//!
+//! This crate provides tools and definitions to assist in using these effects.
+//!
+//! # The sequence pattern
+//!
+//! The special sequence to be injected into the output sent to the console/terminal is comprised of
+//! four parts:
+//!
+//!  1. `\u{1B}`, the escape char
+//!  2. `[`
+//!  3. One or more numbers using `;` as a separator
+//!  4. `m`
+//!
+//! The numbers used in the third part each correspond to a particular effect. The effects specified
+//! are applied in sequence and are applied cumulatively both with respect to previous effects in
+//! the same sequence and also to any existing effects previously applied by a past sequence. There
+//! are no numbers assigned for turning off individual effects, just one 'reset' effect (`0`) which
+//! removes all effects currently applied.
+//!
+//! An example: `"\u{1B}[31;1m"` specifies two effects, red text (`31`) and bold text (`1`).
+//!
+//! No list of effect ↔ number mapping is given here, just common sequences.
+//!
+//! # Resetting
+//!
+//! When resetting text back to "normal", prefer `RESET` (`"\u{1B}[0m"`) rather than setting
+//! color to black (or white).
+//!
+//! # Examples
+//!
+//! Injecting sequences (irregardless of whether or not it is a good idea to do so)
+//!
+//! ```rust,ignore
+//! const RESET: &str = "\u{1B}[0m";
+//! const RED_BOLD: &str = "\u{1B}[31;1m";
+//! println!("normal-text {}red-and-bold-text{} normal-text", RED_BOLD, RESET);
+//! ```
+//!
+//! Injecting sequences while being careful of whether or not to do so (of which there are many
+//! potential solutions, of varying efficiency)
+//!
+//! ```rust,ignore
+//! const RESET: &str = "\u{1B}[0m";
+//! const BOLD: &str = "\u{1B}[1m";
+//! let format = term_ctrl::color_supported();
+//! let filter = |seq| { match format { true => seq, false => "" } };
+//! println!("normal-text {}possibly-bold-text{} normal-text", filter(BOLD), filter(RESET));
+//! ```
 
-/* Console/terminal text control
- *
- * Not available on Windows (apparently), and should only be used otherwise when stdout is actually
- * a tty.
- *
- * Control sequence pattern is "\u{1B}" (escape char) and "m", with one or more particular numbers
- * separated by ";".
- *
- * Note, when resetting text back to "normal", prefer RESET ("\u{1B}[0m") rather than setting color
- * to black (or white). */
+extern crate libc;
 
 // Control
 pub static RESET:     &str = "\u{1B}[0m";
