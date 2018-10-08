@@ -1,4 +1,4 @@
-# ???? (???? ??, ????)
+# 0.2 (October 9th, 2018)
 
  * Improved crate documentation
  * Now avoids `libc` for windows builds, where it was unused
