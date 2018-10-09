@@ -5,6 +5,7 @@
  * Grouped codes into sub-modules
  * Changed codes from statics to constants
  * Added and used a macro for creating sequences
+ * Renamed `color_supported` to `fmt_supported`
 
 # 0.1 (January 24th, 2018)
 

@@ -65,7 +65,7 @@
 //! ```rust,ignore
 //! const RESET: &str = "\u{1B}[0m";
 //! const BOLD: &str = "\u{1B}[1m";
-//! let format = term_ctrl::color_supported();
+//! let format = term_ctrl::fmt_supported();
 //! let filter = |seq| { match format { true => seq, false => "" } };
 //! println!("normal-text {}possibly-bold-text{} normal-text", filter(BOLD), filter(RESET));
 //! ```
@@ -163,12 +163,14 @@ pub mod highlight2 {
     pub const WHITE:   &str = term_seq!(107);
 }
 
+/// Is format sequences supported? (Always returns `false` on Windows)
 #[cfg(windows)]
-pub fn color_supported() -> bool {
+pub fn fmt_supported() -> bool {
     false
 }
+/// Is format sequences supported? Returns `false` if stdout is not a tty.
 #[cfg(not(windows))]
-pub fn color_supported() -> bool {
+pub fn fmt_supported() -> bool {
     if unsafe { libc::isatty(libc::STDOUT_FILENO) } == 0 {
         return false;
     }
