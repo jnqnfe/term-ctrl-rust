@@ -69,78 +69,78 @@
 #[cfg(not(windows))]
 extern crate libc;
 
-pub static RESET: &str = "\u{1B}[0m";
+pub const RESET: &str = "\u{1B}[0m";
 
 /// Effects
 pub mod effects {
-    pub static BOLD:      &str = "\u{1B}[1m";
-    pub static DIM:       &str = "\u{1B}[2m";
-    pub static ITALIC:    &str = "\u{1B}[3m";
-    pub static UNDERLINE: &str = "\u{1B}[4m";
-    pub static REVERSE:   &str = "\u{1B}[7m";
-    pub static INVISIBLE: &str = "\u{1B}[8m";
+    pub const BOLD:      &str = "\u{1B}[1m";
+    pub const DIM:       &str = "\u{1B}[2m";
+    pub const ITALIC:    &str = "\u{1B}[3m";
+    pub const UNDERLINE: &str = "\u{1B}[4m";
+    pub const REVERSE:   &str = "\u{1B}[7m";
+    pub const INVISIBLE: &str = "\u{1B}[8m";
     /// Strike-through
-    pub static STRIKE:    &str = "\u{1B}[9m";
+    pub const STRIKE:    &str = "\u{1B}[9m";
 }
 
 /// Color set 1
 pub mod color1 {
-    pub static BLACK:   &str = "\u{1B}[30m";
-    pub static RED:     &str = "\u{1B}[31m";
-    pub static GREEN:   &str = "\u{1B}[32m";
-    pub static YELLOW:  &str = "\u{1B}[33m";
-    pub static BLUE:    &str = "\u{1B}[34m";
-    pub static MAGENTA: &str = "\u{1B}[35m";
-    pub static CYAN:    &str = "\u{1B}[36m";
-    pub static WHITE:   &str = "\u{1B}[37m";
+    pub const BLACK:   &str = "\u{1B}[30m";
+    pub const RED:     &str = "\u{1B}[31m";
+    pub const GREEN:   &str = "\u{1B}[32m";
+    pub const YELLOW:  &str = "\u{1B}[33m";
+    pub const BLUE:    &str = "\u{1B}[34m";
+    pub const MAGENTA: &str = "\u{1B}[35m";
+    pub const CYAN:    &str = "\u{1B}[36m";
+    pub const WHITE:   &str = "\u{1B}[37m";
 }
 
 /// Color set 2
 pub mod color2 {
-    pub static BLACK:   &str = "\u{1B}[90m";
-    pub static RED:     &str = "\u{1B}[91m";
-    pub static GREEN:   &str = "\u{1B}[92m";
-    pub static YELLOW:  &str = "\u{1B}[93m";
-    pub static BLUE:    &str = "\u{1B}[94m";
-    pub static MAGENTA: &str = "\u{1B}[95m";
-    pub static CYAN:    &str = "\u{1B}[96m";
-    pub static WHITE:   &str = "\u{1B}[97m";
+    pub const BLACK:   &str = "\u{1B}[90m";
+    pub const RED:     &str = "\u{1B}[91m";
+    pub const GREEN:   &str = "\u{1B}[92m";
+    pub const YELLOW:  &str = "\u{1B}[93m";
+    pub const BLUE:    &str = "\u{1B}[94m";
+    pub const MAGENTA: &str = "\u{1B}[95m";
+    pub const CYAN:    &str = "\u{1B}[96m";
+    pub const WHITE:   &str = "\u{1B}[97m";
 }
 
 /// Combined bold + color1
 pub mod color1_bold {
-    pub static BLACK:   &str = "\u{1B}[30;1m";
-    pub static RED:     &str = "\u{1B}[31;1m";
-    pub static GREEN:   &str = "\u{1B}[32;1m";
-    pub static YELLOW:  &str = "\u{1B}[33;1m";
-    pub static BLUE:    &str = "\u{1B}[34;1m";
-    pub static MAGENTA: &str = "\u{1B}[35;1m";
-    pub static CYAN:    &str = "\u{1B}[36;1m";
-    pub static WHITE:   &str = "\u{1B}[37;1m";
+    pub const BLACK:   &str = "\u{1B}[30;1m";
+    pub const RED:     &str = "\u{1B}[31;1m";
+    pub const GREEN:   &str = "\u{1B}[32;1m";
+    pub const YELLOW:  &str = "\u{1B}[33;1m";
+    pub const BLUE:    &str = "\u{1B}[34;1m";
+    pub const MAGENTA: &str = "\u{1B}[35;1m";
+    pub const CYAN:    &str = "\u{1B}[36;1m";
+    pub const WHITE:   &str = "\u{1B}[37;1m";
 }
 
 /// Text background color highlighting, set 1
 pub mod highlight1 {
-    pub static BLACK:   &str = "\u{1B}[40m";
-    pub static RED:     &str = "\u{1B}[41m";
-    pub static GREEN:   &str = "\u{1B}[42m";
-    pub static YELLOW:  &str = "\u{1B}[43m";
-    pub static BLUE:    &str = "\u{1B}[44m";
-    pub static MAGENTA: &str = "\u{1B}[45m";
-    pub static CYAN:    &str = "\u{1B}[46m";
-    pub static WHITE:   &str = "\u{1B}[47m";
+    pub const BLACK:   &str = "\u{1B}[40m";
+    pub const RED:     &str = "\u{1B}[41m";
+    pub const GREEN:   &str = "\u{1B}[42m";
+    pub const YELLOW:  &str = "\u{1B}[43m";
+    pub const BLUE:    &str = "\u{1B}[44m";
+    pub const MAGENTA: &str = "\u{1B}[45m";
+    pub const CYAN:    &str = "\u{1B}[46m";
+    pub const WHITE:   &str = "\u{1B}[47m";
 }
 
 /// Text background color highlighting, set 2
 pub mod highlight2 {
-    pub static BLACK:   &str = "\u{1B}[100m";
-    pub static RED:     &str = "\u{1B}[101m";
-    pub static GREEN:   &str = "\u{1B}[102m";
-    pub static YELLOW:  &str = "\u{1B}[103m";
-    pub static BLUE:    &str = "\u{1B}[104m";
-    pub static MAGENTA: &str = "\u{1B}[105m";
-    pub static CYAN:    &str = "\u{1B}[106m";
-    pub static WHITE:   &str = "\u{1B}[107m";
+    pub const BLACK:   &str = "\u{1B}[100m";
+    pub const RED:     &str = "\u{1B}[101m";
+    pub const GREEN:   &str = "\u{1B}[102m";
+    pub const YELLOW:  &str = "\u{1B}[103m";
+    pub const BLUE:    &str = "\u{1B}[104m";
+    pub const MAGENTA: &str = "\u{1B}[105m";
+    pub const CYAN:    &str = "\u{1B}[106m";
+    pub const WHITE:   &str = "\u{1B}[107m";
 }
 
 #[cfg(windows)]
