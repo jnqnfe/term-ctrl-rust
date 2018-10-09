@@ -66,7 +66,7 @@
 //! ```rust,ignore
 //! const RESET: &str = "\u{1B}[0m";
 //! const BOLD: &str = "\u{1B}[1m";
-//! let format = term_ctrl::fmt_supported();
+//! let format = term_ctrl::fmt_supported_stdout();
 //! let filter = |seq| { match format { true => seq, false => "" } };
 //! println!("normal-text {}possibly-bold-text{} normal-text", filter(BOLD), filter(RESET));
 //! ```
@@ -205,17 +205,84 @@ pub mod highlight2 {
     pub const WHITE:   &str = term_seq!(107);
 }
 
-/// Is format sequences supported? (Always returns `false` on Windows)
-#[cfg(windows)]
-#[inline(always)]
-pub fn fmt_supported() -> bool {
-    false
-}
-/// Is format sequences supported? Returns `false` if stdout is not a tty.
 #[cfg(not(windows))]
-pub fn fmt_supported() -> bool {
-    if unsafe { libc::isatty(libc::STDOUT_FILENO) } == 0 {
-        return false;
+pub use unix::*;
+#[cfg(windows)]
+pub use windows::*;
+
+/// Are format sequences supported on stdout? Returns `false` if stdout is not a tty.
+pub fn fmt_supported_stdout() -> bool {
+    StdPipe::fmt_supported(StdPipe::StdOut)
+}
+
+/// Are format sequences supported on stderr? Returns `false` if stderr is not a tty.
+pub fn fmt_supported_stderr() -> bool {
+    StdPipe::fmt_supported(StdPipe::StdErr)
+}
+
+/// Should I use formatting on stdout?
+///
+/// Convenience helper, taking user preference, and checking support. Returns `true` for yes,
+/// `false` for no.
+pub fn use_fmt_stdout(user_pref: bool) -> bool {
+    user_pref && StdPipe::fmt_supported(StdPipe::StdOut)
+}
+
+/// Should I use formatting on stderr?
+///
+/// Convenience helper, taking user preference, and checking support. Returns `true` for yes,
+/// `false` for no.
+pub fn use_fmt_stderr(user_pref: bool) -> bool {
+    user_pref && StdPipe::fmt_supported(StdPipe::StdErr)
+}
+
+#[cfg(not(windows))]
+mod unix {
+    use libc;
+
+    #[cfg(not(windows))]
+    #[repr(u8)]
+    #[derive(Debug, Copy, Clone, PartialEq, Eq)]
+    pub enum StdPipe {
+        StdIn = libc::STDIN_FILENO as u8,
+        StdOut = libc::STDOUT_FILENO as u8,
+        StdErr = libc::STDERR_FILENO as u8,
     }
-    true
+
+    impl From<StdPipe> for libc::c_int {
+        fn from(p: StdPipe) -> Self { p as libc::c_int }
+    }
+
+    impl StdPipe {
+        /// Are format sequences supported on `self`? Returns `false` if not a tty or is
+        /// `StdPipe::StdIn`.
+        pub fn fmt_supported(self) -> bool {
+            match self {
+                StdPipe::StdIn => false,
+                _ => match unsafe { libc::isatty(libc::c_int::from(self)) } {
+                    0 => false,
+                    _ => true,
+                },
+            }
+        }
+    }
+}
+
+#[cfg(windows)]
+mod windows {
+    #[repr(u8)]
+    #[derive(Debug, Copy, Clone, PartialEq, Eq)]
+    pub enum StdPipe {
+        StdIn,
+        StdOut,
+        StdErr,
+    }
+
+    impl StdPipe {
+        /// Are format sequences supported on `self`? (Always returns `false` on Windows)
+        #[inline(always)]
+        pub fn fmt_supported(self) -> bool {
+            false
+        }
+    }
 }
