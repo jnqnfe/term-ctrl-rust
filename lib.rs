@@ -40,6 +40,10 @@
 //!
 //! No list of effect ↔ number mapping is given here, just common sequences.
 //!
+//! ## Macro
+//!
+//! The `term_seq` macro has been provided for constructing a sequence `str`.
+//!
 //! # Resetting
 //!
 //! When resetting text back to "normal", prefer `RESET` (`"\u{1B}[0m"`) rather than setting
@@ -69,78 +73,94 @@
 #[cfg(not(windows))]
 extern crate libc;
 
-pub const RESET: &str = "\u{1B}[0m";
+/// Macro for defining control sequences
+///
+/// A sequence can be created with one or more numbers separated by commas.
+///
+/// Examples:
+///
+/// ```rust,ignore
+/// const BOLD: &str = term_seq!(1);
+/// const RED_BOLD_UNDERLINE: &str = term_seq!(31,1,4);
+/// ```
+#[macro_export]
+macro_rules! term_seq {
+    ($n1:expr, $($n2:expr),*) => { concat!("\u{1B}[", $n1, $(concat!(";", $n2)),*, "m") };
+    ($n:expr) => { concat!("\u{1B}[", $n, "m") };
+}
+
+pub const RESET: &str = term_seq!(0);
 
 /// Effects
 pub mod effects {
-    pub const BOLD:      &str = "\u{1B}[1m";
-    pub const DIM:       &str = "\u{1B}[2m";
-    pub const ITALIC:    &str = "\u{1B}[3m";
-    pub const UNDERLINE: &str = "\u{1B}[4m";
-    pub const REVERSE:   &str = "\u{1B}[7m";
-    pub const INVISIBLE: &str = "\u{1B}[8m";
+    pub const BOLD:      &str = term_seq!(1);
+    pub const DIM:       &str = term_seq!(2);
+    pub const ITALIC:    &str = term_seq!(3);
+    pub const UNDERLINE: &str = term_seq!(4);
+    pub const REVERSE:   &str = term_seq!(7);
+    pub const INVISIBLE: &str = term_seq!(8);
     /// Strike-through
-    pub const STRIKE:    &str = "\u{1B}[9m";
+    pub const STRIKE:    &str = term_seq!(9);
 }
 
 /// Color set 1
 pub mod color1 {
-    pub const BLACK:   &str = "\u{1B}[30m";
-    pub const RED:     &str = "\u{1B}[31m";
-    pub const GREEN:   &str = "\u{1B}[32m";
-    pub const YELLOW:  &str = "\u{1B}[33m";
-    pub const BLUE:    &str = "\u{1B}[34m";
-    pub const MAGENTA: &str = "\u{1B}[35m";
-    pub const CYAN:    &str = "\u{1B}[36m";
-    pub const WHITE:   &str = "\u{1B}[37m";
+    pub const BLACK:   &str = term_seq!(30);
+    pub const RED:     &str = term_seq!(31);
+    pub const GREEN:   &str = term_seq!(32);
+    pub const YELLOW:  &str = term_seq!(33);
+    pub const BLUE:    &str = term_seq!(34);
+    pub const MAGENTA: &str = term_seq!(35);
+    pub const CYAN:    &str = term_seq!(36);
+    pub const WHITE:   &str = term_seq!(37);
 }
 
 /// Color set 2
 pub mod color2 {
-    pub const BLACK:   &str = "\u{1B}[90m";
-    pub const RED:     &str = "\u{1B}[91m";
-    pub const GREEN:   &str = "\u{1B}[92m";
-    pub const YELLOW:  &str = "\u{1B}[93m";
-    pub const BLUE:    &str = "\u{1B}[94m";
-    pub const MAGENTA: &str = "\u{1B}[95m";
-    pub const CYAN:    &str = "\u{1B}[96m";
-    pub const WHITE:   &str = "\u{1B}[97m";
+    pub const BLACK:   &str = term_seq!(90);
+    pub const RED:     &str = term_seq!(91);
+    pub const GREEN:   &str = term_seq!(92);
+    pub const YELLOW:  &str = term_seq!(93);
+    pub const BLUE:    &str = term_seq!(94);
+    pub const MAGENTA: &str = term_seq!(95);
+    pub const CYAN:    &str = term_seq!(96);
+    pub const WHITE:   &str = term_seq!(97);
 }
 
 /// Combined bold + color1
 pub mod color1_bold {
-    pub const BLACK:   &str = "\u{1B}[30;1m";
-    pub const RED:     &str = "\u{1B}[31;1m";
-    pub const GREEN:   &str = "\u{1B}[32;1m";
-    pub const YELLOW:  &str = "\u{1B}[33;1m";
-    pub const BLUE:    &str = "\u{1B}[34;1m";
-    pub const MAGENTA: &str = "\u{1B}[35;1m";
-    pub const CYAN:    &str = "\u{1B}[36;1m";
-    pub const WHITE:   &str = "\u{1B}[37;1m";
+    pub const BLACK:   &str = term_seq!(30,1);
+    pub const RED:     &str = term_seq!(31,1);
+    pub const GREEN:   &str = term_seq!(32,1);
+    pub const YELLOW:  &str = term_seq!(33,1);
+    pub const BLUE:    &str = term_seq!(34,1);
+    pub const MAGENTA: &str = term_seq!(35,1);
+    pub const CYAN:    &str = term_seq!(36,1);
+    pub const WHITE:   &str = term_seq!(37,1);
 }
 
 /// Text background color highlighting, set 1
 pub mod highlight1 {
-    pub const BLACK:   &str = "\u{1B}[40m";
-    pub const RED:     &str = "\u{1B}[41m";
-    pub const GREEN:   &str = "\u{1B}[42m";
-    pub const YELLOW:  &str = "\u{1B}[43m";
-    pub const BLUE:    &str = "\u{1B}[44m";
-    pub const MAGENTA: &str = "\u{1B}[45m";
-    pub const CYAN:    &str = "\u{1B}[46m";
-    pub const WHITE:   &str = "\u{1B}[47m";
+    pub const BLACK:   &str = term_seq!(40);
+    pub const RED:     &str = term_seq!(41);
+    pub const GREEN:   &str = term_seq!(42);
+    pub const YELLOW:  &str = term_seq!(43);
+    pub const BLUE:    &str = term_seq!(44);
+    pub const MAGENTA: &str = term_seq!(45);
+    pub const CYAN:    &str = term_seq!(46);
+    pub const WHITE:   &str = term_seq!(47);
 }
 
 /// Text background color highlighting, set 2
 pub mod highlight2 {
-    pub const BLACK:   &str = "\u{1B}[100m";
-    pub const RED:     &str = "\u{1B}[101m";
-    pub const GREEN:   &str = "\u{1B}[102m";
-    pub const YELLOW:  &str = "\u{1B}[103m";
-    pub const BLUE:    &str = "\u{1B}[104m";
-    pub const MAGENTA: &str = "\u{1B}[105m";
-    pub const CYAN:    &str = "\u{1B}[106m";
-    pub const WHITE:   &str = "\u{1B}[107m";
+    pub const BLACK:   &str = term_seq!(100);
+    pub const RED:     &str = term_seq!(101);
+    pub const GREEN:   &str = term_seq!(102);
+    pub const YELLOW:  &str = term_seq!(103);
+    pub const BLUE:    &str = term_seq!(104);
+    pub const MAGENTA: &str = term_seq!(105);
+    pub const CYAN:    &str = term_seq!(106);
+    pub const WHITE:   &str = term_seq!(107);
 }
 
 #[cfg(windows)]
