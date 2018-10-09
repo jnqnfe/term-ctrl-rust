@@ -165,6 +165,7 @@ pub mod highlight2 {
 
 /// Is format sequences supported? (Always returns `false` on Windows)
 #[cfg(windows)]
+#[inline(always)]
 pub fn fmt_supported() -> bool {
     false
 }
