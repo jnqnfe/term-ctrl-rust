@@ -38,7 +38,8 @@
 //!
 //! An example: `"\u{1B}[31;1m"` specifies two effects, red text (`31`) and bold text (`1`).
 //!
-//! No list of effect ↔ number mapping is given here, just common sequences.
+//! A list/description of number mapping is given in the [`numbers`](numbers/index.html) mod
+//! documentation.
 //!
 //! ## Macro
 //!
@@ -72,6 +73,45 @@
 
 #[cfg(not(windows))]
 extern crate libc;
+
+/// Sequence number definitions (documentation)
+pub mod numbers {
+    //! # Known number definitions
+    //!
+    //! - 0: Reset all to defaults
+    //!
+    //! ## Effects (1-9)
+    //!
+    //!  - 1: Bold
+    //!  - 2: Dim
+    //!  - 3: Italic
+    //!  - 4: Underline
+    //!  - 5: ?
+    //!  - 6: ?
+    //!  - 7: "Reverse"
+    //!  - 8: Invisible
+    //!  - 9: Strike-through
+    //!
+    //! ## Colors
+    //!
+    //! There are four sets of seven colors
+    //!
+    //!  - Text color set 1 (30-37)
+    //!  - Background-highlight set 1 (40-47)
+    //!  - Text color set 2 (90-97)
+    //!  - Background-highlight set 2 (100-107)
+    //!
+    //! All four sets consist of seven colors, in the following sequence:
+    //!
+    //!  - x0: Black
+    //!  - x1: Red
+    //!  - x2: Green
+    //!  - x3: Yellow
+    //!  - x4: Blue
+    //!  - x5: Magenta
+    //!  - x6: Cyan
+    //!  - x7: White
+}
 
 /// Macro for defining control sequences
 ///
