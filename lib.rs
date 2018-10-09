@@ -71,6 +71,8 @@
 //! println!("normal-text {}possibly-bold-text{} normal-text", filter(BOLD), filter(RESET));
 //! ```
 
+#![no_std]
+
 #[cfg(not(windows))]
 extern crate libc;
 
