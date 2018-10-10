@@ -18,7 +18,7 @@
 //! actually a tty (you wouldn't want these control sequences to exist in output that the user is
 //! piping into a text file or another program).
 //!
-//! This crate provides tools and definitions to assist in using these effects.
+//! This crate provides tools and pre-defined definitions to assist in using these effects.
 //!
 //! # The sequence pattern
 //!
@@ -131,78 +131,81 @@ macro_rules! term_seq {
     ($n:expr) => { concat!("\u{1B}[", $n, "m") };
 }
 
-pub const RESET: &str = term_seq!(0);
+/// Predefined sequences
+pub mod predefined {
+    pub const RESET: &str = term_seq!(0);
 
-/// Effects
-pub mod effects {
-    pub const BOLD:      &str = term_seq!(1);
-    pub const DIM:       &str = term_seq!(2);
-    pub const ITALIC:    &str = term_seq!(3);
-    pub const UNDERLINE: &str = term_seq!(4);
-    pub const REVERSE:   &str = term_seq!(7);
-    pub const INVISIBLE: &str = term_seq!(8);
-    /// Strike-through
-    pub const STRIKE:    &str = term_seq!(9);
-}
+    /// Effects
+    pub mod effects {
+        pub const BOLD:      &str = term_seq!(1);
+        pub const DIM:       &str = term_seq!(2);
+        pub const ITALIC:    &str = term_seq!(3);
+        pub const UNDERLINE: &str = term_seq!(4);
+        pub const REVERSE:   &str = term_seq!(7);
+        pub const INVISIBLE: &str = term_seq!(8);
+        /// Strike-through
+        pub const STRIKE:    &str = term_seq!(9);
+    }
 
-/// Color set 1
-pub mod color1 {
-    pub const BLACK:   &str = term_seq!(30);
-    pub const RED:     &str = term_seq!(31);
-    pub const GREEN:   &str = term_seq!(32);
-    pub const YELLOW:  &str = term_seq!(33);
-    pub const BLUE:    &str = term_seq!(34);
-    pub const MAGENTA: &str = term_seq!(35);
-    pub const CYAN:    &str = term_seq!(36);
-    pub const WHITE:   &str = term_seq!(37);
-}
+    /// Color set 1
+    pub mod color1 {
+        pub const BLACK:   &str = term_seq!(30);
+        pub const RED:     &str = term_seq!(31);
+        pub const GREEN:   &str = term_seq!(32);
+        pub const YELLOW:  &str = term_seq!(33);
+        pub const BLUE:    &str = term_seq!(34);
+        pub const MAGENTA: &str = term_seq!(35);
+        pub const CYAN:    &str = term_seq!(36);
+        pub const WHITE:   &str = term_seq!(37);
+    }
 
-/// Color set 2
-pub mod color2 {
-    pub const BLACK:   &str = term_seq!(90);
-    pub const RED:     &str = term_seq!(91);
-    pub const GREEN:   &str = term_seq!(92);
-    pub const YELLOW:  &str = term_seq!(93);
-    pub const BLUE:    &str = term_seq!(94);
-    pub const MAGENTA: &str = term_seq!(95);
-    pub const CYAN:    &str = term_seq!(96);
-    pub const WHITE:   &str = term_seq!(97);
-}
+    /// Color set 2
+    pub mod color2 {
+        pub const BLACK:   &str = term_seq!(90);
+        pub const RED:     &str = term_seq!(91);
+        pub const GREEN:   &str = term_seq!(92);
+        pub const YELLOW:  &str = term_seq!(93);
+        pub const BLUE:    &str = term_seq!(94);
+        pub const MAGENTA: &str = term_seq!(95);
+        pub const CYAN:    &str = term_seq!(96);
+        pub const WHITE:   &str = term_seq!(97);
+    }
 
-/// Combined bold + color1
-pub mod color1_bold {
-    pub const BLACK:   &str = term_seq!(30,1);
-    pub const RED:     &str = term_seq!(31,1);
-    pub const GREEN:   &str = term_seq!(32,1);
-    pub const YELLOW:  &str = term_seq!(33,1);
-    pub const BLUE:    &str = term_seq!(34,1);
-    pub const MAGENTA: &str = term_seq!(35,1);
-    pub const CYAN:    &str = term_seq!(36,1);
-    pub const WHITE:   &str = term_seq!(37,1);
-}
+    /// Combined bold + color1
+    pub mod color1_bold {
+        pub const BLACK:   &str = term_seq!(30,1);
+        pub const RED:     &str = term_seq!(31,1);
+        pub const GREEN:   &str = term_seq!(32,1);
+        pub const YELLOW:  &str = term_seq!(33,1);
+        pub const BLUE:    &str = term_seq!(34,1);
+        pub const MAGENTA: &str = term_seq!(35,1);
+        pub const CYAN:    &str = term_seq!(36,1);
+        pub const WHITE:   &str = term_seq!(37,1);
+    }
 
-/// Text background color highlighting, set 1
-pub mod highlight1 {
-    pub const BLACK:   &str = term_seq!(40);
-    pub const RED:     &str = term_seq!(41);
-    pub const GREEN:   &str = term_seq!(42);
-    pub const YELLOW:  &str = term_seq!(43);
-    pub const BLUE:    &str = term_seq!(44);
-    pub const MAGENTA: &str = term_seq!(45);
-    pub const CYAN:    &str = term_seq!(46);
-    pub const WHITE:   &str = term_seq!(47);
-}
+    /// Text background color highlighting, set 1
+    pub mod highlight1 {
+        pub const BLACK:   &str = term_seq!(40);
+        pub const RED:     &str = term_seq!(41);
+        pub const GREEN:   &str = term_seq!(42);
+        pub const YELLOW:  &str = term_seq!(43);
+        pub const BLUE:    &str = term_seq!(44);
+        pub const MAGENTA: &str = term_seq!(45);
+        pub const CYAN:    &str = term_seq!(46);
+        pub const WHITE:   &str = term_seq!(47);
+    }
 
-/// Text background color highlighting, set 2
-pub mod highlight2 {
-    pub const BLACK:   &str = term_seq!(100);
-    pub const RED:     &str = term_seq!(101);
-    pub const GREEN:   &str = term_seq!(102);
-    pub const YELLOW:  &str = term_seq!(103);
-    pub const BLUE:    &str = term_seq!(104);
-    pub const MAGENTA: &str = term_seq!(105);
-    pub const CYAN:    &str = term_seq!(106);
-    pub const WHITE:   &str = term_seq!(107);
+    /// Text background color highlighting, set 2
+    pub mod highlight2 {
+        pub const BLACK:   &str = term_seq!(100);
+        pub const RED:     &str = term_seq!(101);
+        pub const GREEN:   &str = term_seq!(102);
+        pub const YELLOW:  &str = term_seq!(103);
+        pub const BLUE:    &str = term_seq!(104);
+        pub const MAGENTA: &str = term_seq!(105);
+        pub const CYAN:    &str = term_seq!(106);
+        pub const WHITE:   &str = term_seq!(107);
+    }
 }
 
 #[cfg(not(windows))]

@@ -1,3 +1,7 @@
+# ?? (???? ??, ????)
+
+ * Grouped predefined sequences in `predefined` mod
+
 # 0.2 (October 9th, 2018)
 
  * Improved crate documentation
