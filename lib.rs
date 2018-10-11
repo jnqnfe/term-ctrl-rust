@@ -1,6 +1,4 @@
-//! Console/terminal text control
-
-// Copyright (c) 2017 Lyndon Brown
+// Copyright 2017 Lyndon Brown
 //
 // Licensed under the MIT license or the Apache license (Version 2.0), at your option. You may not
 // copy, modify, or distribute this file except in compliance with said license. You can find copies
@@ -8,6 +6,7 @@
 // <http://opensource.org/licenses/MIT> and <http://www.apache.org/licenses/LICENSE-2.0>
 // respectively.
 
+//! Console/terminal text control
 //!
 //! Text output to a console/terminal can (sometimes) be modified with certain (limited) effects
 //! (colors, boldness, etc). This is achieved by injecting a special sequence of characters into the

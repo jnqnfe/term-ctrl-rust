@@ -1,3 +1,7 @@
+# ???? (???? ??, ????)
+
+ * Reorganised copyright header position
+
 # 0.3 (October 10th, 2018)
 
  * Grouped predefined sequences in `predefined` mod
