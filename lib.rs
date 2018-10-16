@@ -53,7 +53,7 @@
 //!
 //! Injecting sequences (irregardless of whether or not it is a good idea to do so)
 //!
-//! ```rust,ignore
+//! ```rust
 //! const RESET: &str = "\u{1B}[0m";
 //! const RED_BOLD: &str = "\u{1B}[31;1m";
 //! println!("normal-text {}red-and-bold-text{} normal-text", RED_BOLD, RESET);
@@ -62,7 +62,7 @@
 //! Injecting sequences while being careful of whether or not to do so (of which there are many
 //! potential solutions, of varying efficiency)
 //!
-//! ```rust,ignore
+//! ```rust
 //! const RESET: &str = "\u{1B}[0m";
 //! const BOLD: &str = "\u{1B}[1m";
 //! let format = term_ctrl::fmt_supported_stdout();
