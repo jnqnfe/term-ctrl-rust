@@ -1,5 +1,6 @@
 # ???? (???? ??, ????)
 
+ * Changed "Version" to "version" in copyright header
  * Reorganised copyright header position
 
 # 0.3 (October 10th, 2018)
