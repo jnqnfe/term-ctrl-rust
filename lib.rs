@@ -253,7 +253,6 @@ mod unix {
     use libc;
     use super::FmtSupported;
 
-    #[cfg(not(windows))]
     #[repr(u8)]
     #[derive(Debug, Copy, Clone, PartialEq, Eq)]
     pub enum StdPipe {

@@ -2,6 +2,7 @@
 
  * Used a trait to help ensure that the `fmt_supported` method on `StdPipe` always has the same
    prototype across platforms.
+ * Removed a stray redundant platform conditional
  * Changed "Version" to "version" in copyright header
  * Reorganised copyright header position
 
