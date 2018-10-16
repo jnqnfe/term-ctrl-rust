@@ -238,9 +238,20 @@ pub fn use_fmt_stderr(user_pref: bool) -> bool {
     user_pref && StdPipe::fmt_supported(StdPipe::StdErr)
 }
 
+//NOTE: This **MUST** be public, else implementation is hidden!
+/// Used for consistent cross-platform implementation
+pub trait FmtSupported {
+    /// Are format sequences supported on `self`?
+    ///
+    /// - On Unix: Returns `false` if not a tty or is `StdPipe::StdIn`
+    /// - On Window: Always return `false`
+    fn fmt_supported(self) -> bool;
+}
+
 #[cfg(not(windows))]
 mod unix {
     use libc;
+    use super::FmtSupported;
 
     #[cfg(not(windows))]
     #[repr(u8)]
@@ -255,10 +266,8 @@ mod unix {
         fn from(p: StdPipe) -> Self { p as libc::c_int }
     }
 
-    impl StdPipe {
-        /// Are format sequences supported on `self`? Returns `false` if not a tty or is
-        /// `StdPipe::StdIn`.
-        pub fn fmt_supported(self) -> bool {
+    impl FmtSupported for StdPipe {
+        fn fmt_supported(self) -> bool {
             match self {
                 StdPipe::StdIn => false,
                 _ => match unsafe { libc::isatty(libc::c_int::from(self)) } {
@@ -272,6 +281,8 @@ mod unix {
 
 #[cfg(windows)]
 mod windows {
+    use super::FmtSupported;
+
     #[repr(u8)]
     #[derive(Debug, Copy, Clone, PartialEq, Eq)]
     pub enum StdPipe {
@@ -280,10 +291,9 @@ mod windows {
         StdErr,
     }
 
-    impl StdPipe {
-        /// Are format sequences supported on `self`? (Always returns `false` on Windows)
+    impl FmtSupported for StdPipe {
         #[inline(always)]
-        pub fn fmt_supported(self) -> bool {
+        fn fmt_supported(self) -> bool {
             false
         }
     }
