@@ -1,11 +1,10 @@
-# ???? (???? ??, ????)
+# 0.4.0 (October 16th, 2018)
 
  * Introduced unit tests
  * Used a trait to help ensure that the `fmt_supported` method on `StdPipe` always has the same
    prototype across platforms.
  * Removed a stray redundant platform conditional
  * Enabled some doc tests
- * Changed "Version" to "version" in copyright header
  * Reorganised copyright header position
 
 # 0.3 (October 10th, 2018)
