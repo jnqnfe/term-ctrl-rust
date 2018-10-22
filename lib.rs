@@ -42,7 +42,13 @@
 //!
 //! ## Macro
 //!
-//! The `term_seq` macro has been provided for constructing a sequence `str`.
+//! The `term_seq` macro has been provided for constructing a sequence `str`. Import it via:
+//!
+//! ```rust
+//! #[macro_use]
+//! extern crate term_ctrl;
+//! # fn main() {}
+//! ```
 //!
 //! # Resetting
 //!
@@ -54,20 +60,31 @@
 //! Injecting sequences (irregardless of whether or not it is a good idea to do so)
 //!
 //! ```rust
-//! const RESET: &str = "\u{1B}[0m";
-//! const RED_BOLD: &str = "\u{1B}[31;1m";
+//! # #[macro_use]
+//! # extern crate term_ctrl;
+//! # fn main() {
+//! const RESET: &str = term_seq!(0); // "\u{1B}[0m"
+//! const RED_BOLD: &str = term_seq!(31,1); // "\u{1B}[31;1m"
 //! println!("normal-text {}red-and-bold-text{} normal-text", RED_BOLD, RESET);
+//! # }
+//! ```
+//!
+//! Same, but using predefined sequences
+//!
+//! ```rust
+//! use term_ctrl::predefined::*;
+//! println!("normal-text {}red-and-bold-text{} normal-text", color1_bold::RED, RESET);
 //! ```
 //!
 //! Injecting sequences while being careful of whether or not to do so (of which there are many
 //! potential solutions, of varying efficiency)
 //!
 //! ```rust
-//! const RESET: &str = "\u{1B}[0m";
-//! const BOLD: &str = "\u{1B}[1m";
+//! use term_ctrl::predefined::*;
 //! let format = term_ctrl::fmt_supported_stdout();
 //! let filter = |seq| { match format { true => seq, false => "" } };
-//! println!("normal-text {}possibly-bold-text{} normal-text", filter(BOLD), filter(RESET));
+//! println!("normal-text {}possibly-bold-text{} normal-text",
+//!          filter(effects::BOLD), filter(RESET));
 //! ```
 
 #![no_std]
