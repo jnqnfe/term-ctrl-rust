@@ -137,9 +137,13 @@ pub mod numbers {
 ///
 /// Examples:
 ///
-/// ```rust,ignore
+/// ```rust
+/// # #[macro_use]
+/// # extern crate term_ctrl;
+/// # fn main() {
 /// const BOLD: &str = term_seq!(1);
 /// const RED_BOLD_UNDERLINE: &str = term_seq!(31,1,4);
+/// # }
 /// ```
 #[macro_export]
 macro_rules! term_seq {
