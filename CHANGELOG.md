@@ -1,3 +1,7 @@
+# 0.4.1 (October 27th, 2018)
+
+ * Documentation example tweaks
+
 # 0.4.0 (October 16th, 2018)
 
  * Introduced unit tests
