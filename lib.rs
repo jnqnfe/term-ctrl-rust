@@ -104,7 +104,7 @@ pub mod numbers {
     //!  - 2: Dim
     //!  - 3: Italic
     //!  - 4: Underline
-    //!  - 5: ?
+    //!  - 5: Blink
     //!  - 6: ?
     //!  - 7: "Reverse"
     //!  - 8: Invisible
@@ -161,6 +161,7 @@ pub mod predefined {
         pub const DIM:       &str = term_seq!(2);
         pub const ITALIC:    &str = term_seq!(3);
         pub const UNDERLINE: &str = term_seq!(4);
+        pub const BLINK:     &str = term_seq!(5);
         pub const REVERSE:   &str = term_seq!(7);
         pub const INVISIBLE: &str = term_seq!(8);
         /// Strike-through
