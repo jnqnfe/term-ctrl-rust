@@ -131,24 +131,28 @@ pub mod numbers {
     //!  - x7: White
 }
 
-/// Macro for defining control sequences
+/// Macro for constructing control sequences
 ///
 /// A sequence can be created with one or more numbers separated by commas.
 ///
-/// Examples:
+/// # Examples:
 ///
 /// ```rust
 /// # #[macro_use]
 /// # extern crate term_ctrl;
 /// # fn main() {
-/// const BOLD: &str = term_seq!(1);
-/// const RED_BOLD_UNDERLINE: &str = term_seq!(31,1,4);
+/// // Bold
+/// assert_eq!("\u{1B}[1m", term_seq!(1));
+/// // Red + bold + underline
+/// assert_eq!("\u{1B}[31;1;4m", term_seq!(31,1,4));
 /// # }
 /// ```
 #[macro_export]
 macro_rules! term_seq {
     ($n1:expr, $($n2:expr),*) => { concat!("\u{1B}[", $n1, $(concat!(";", $n2)),*, "m") };
+    ($n1:expr, $($n2:expr,)*) => { concat!("\u{1B}[", $n1, $(concat!(";", $n2)),*, "m") };
     ($n:expr) => { concat!("\u{1B}[", $n, "m") };
+    () => { "" };
 }
 
 /// Predefined sequences
