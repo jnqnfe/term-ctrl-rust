@@ -6,7 +6,7 @@ license = "MIT/Apache-2.0"
 description = """
 Console/terminal control sequences
 """
-keywords = ["terminal", "console"]
+keywords = ["terminal", "console", "ansi"]
 homepage = "https://github.com/jnqnfe/term-ctrl-rust"
 repository = "https://github.com/jnqnfe/term-ctrl-rust"
 readme = "README.md"
