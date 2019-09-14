@@ -13,15 +13,12 @@ extern crate term_ctrl;
 
 use term_ctrl::*;
 
-/// Check `term_seq` macro is available and working correctly
+/// Check `seq` macro is available and working correctly
 #[test]
 fn term_seq() {
-    let t = term_seq!(1);
-    assert_eq!(t, "\u{1B}[1m");
-    let t = term_seq!(1,2);
-    assert_eq!(t, "\u{1B}[1;2m");
-    let t = term_seq!(4,8,15,16,23,42);
-    assert_eq!(t, "\u{1B}[4;8;15;16;23;42m");
+    assert_eq!(seq!(1), "\u{1B}[1m");
+    assert_eq!(seq!(1,2), "\u{1B}[1;2m");
+    assert_eq!(seq!(4,8,15,16,23,42), "\u{1B}[4;8;15;16;23;42m");
 }
 
 /// Check a few `predefined` sequences seem to be available and as expected
