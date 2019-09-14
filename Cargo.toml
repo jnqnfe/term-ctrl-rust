@@ -9,6 +9,7 @@ Console/terminal control sequences
 keywords = ["terminal", "console"]
 homepage = "https://github.com/jnqnfe/term-ctrl-rust"
 repository = "https://github.com/jnqnfe/term-ctrl-rust"
+readme = "README.md"
 publish = false
 
 [lib]
