@@ -27,7 +27,7 @@ pub mod effects {
     pub const STRIKE:    &str = seq!(9);
 }
 
-/// Color set 1
+/// Text colour, set #1
 pub mod color1 {
     use super::*;
 
@@ -41,7 +41,7 @@ pub mod color1 {
     pub const WHITE:   &str = seq!(37);
 }
 
-/// Color set 2
+/// Text colour, set #2
 pub mod color2 {
     use super::*;
 
@@ -55,7 +55,7 @@ pub mod color2 {
     pub const WHITE:   &str = seq!(97);
 }
 
-/// Combined bold + color1
+/// Combined bold + text colour set #1
 pub mod color1_bold {
     use super::*;
 
@@ -69,7 +69,7 @@ pub mod color1_bold {
     pub const WHITE:   &str = seq!(37,1);
 }
 
-/// Text background color highlighting, set 1
+/// Background colour highlighting, set #1
 pub mod highlight1 {
     use super::*;
 
@@ -83,7 +83,7 @@ pub mod highlight1 {
     pub const WHITE:   &str = seq!(47);
 }
 
-/// Text background color highlighting, set 2
+/// Background colour highlighting, set #2
 pub mod highlight2 {
     use super::*;
 
