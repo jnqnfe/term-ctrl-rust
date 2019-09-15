@@ -12,12 +12,5 @@ repository = "https://github.com/jnqnfe/term-ctrl-rust"
 readme = "README.md"
 publish = false
 
-[lib]
-path = "lib.rs"
-
-[[test]]
-name = "tests"
-path = "tests.rs"
-
 [target.'cfg(not(windows))'.dependencies]
 libc = { version = "0.2", default-features = false } #no `use_std`
