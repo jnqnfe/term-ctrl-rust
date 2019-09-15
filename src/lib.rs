@@ -143,14 +143,11 @@ pub mod numbers {
 /// # Examples:
 ///
 /// ```rust
-/// # #[macro_use]
-/// # extern crate term_ctrl;
-/// # fn main() {
+/// # use term_ctrl::seq;
 /// // Bold
 /// assert_eq!("\u{1B}[1m", seq!(1));
 /// // Red + bold + underline
 /// assert_eq!("\u{1B}[31;1;4m", seq!(31,1,4));
-/// # }
 /// ```
 #[macro_export]
 macro_rules! seq {

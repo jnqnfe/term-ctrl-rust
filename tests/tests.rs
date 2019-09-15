@@ -8,7 +8,6 @@
 
 //! Unit tests
 
-#[macro_use]
 extern crate term_ctrl;
 
 use term_ctrl::*;

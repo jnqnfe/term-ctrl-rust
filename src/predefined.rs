@@ -8,7 +8,7 @@
 
 //! Predefined sequence strings
 
-use crate::*;
+use crate::seq;
 
 pub const RESET: &str = seq!(0);
 

@@ -10,6 +10,7 @@ keywords = ["terminal", "console", "ansi"]
 homepage = "https://github.com/jnqnfe/term-ctrl-rust"
 repository = "https://github.com/jnqnfe/term-ctrl-rust"
 readme = "README.md"
+edition = "2018"
 publish = false
 
 [target.'cfg(not(windows))'.dependencies]
