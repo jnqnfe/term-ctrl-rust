@@ -1,3 +1,13 @@
+# 0.5.0 (September 15th, 2019)
+
+ * Reworked the format-supported helpers on top of the `atty` crate, thus bringing better cross
+   platform support.
+ * Added a Windows `enable_ansi_support` function, taken from `ansi_term`
+ * Renamed the `term_seq` macro to more simply `seq`. Shorter is better
+ * Reorganised a bit
+ * Re-wrote the documentation
+ * Various other odd little tweaks really not worth documenting
+
 # 0.4.1 (October 27th, 2018)
 
  * Documentation example tweaks
