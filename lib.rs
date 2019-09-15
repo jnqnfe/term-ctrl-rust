@@ -233,56 +233,56 @@ pub mod predefined {
     }
 }
 
-#[cfg(not(windows))]
-pub use unix::*;
-#[cfg(windows)]
-pub use windows::*;
-
 /// Are format sequences supported on stdout? Returns `false` if stdout is not a tty.
+///
+/// Only available on non-Windows.
+#[cfg(not(windows))]
+#[inline(always)]
 pub fn fmt_supported_stdout() -> bool {
-    StdPipe::fmt_supported(StdPipe::StdOut)
+    self::unix::fmt_supported(self::unix::StdPipe::StdOut)
 }
 
 /// Are format sequences supported on stderr? Returns `false` if stderr is not a tty.
+///
+/// Only available on non-Windows.
+#[cfg(not(windows))]
+#[inline(always)]
 pub fn fmt_supported_stderr() -> bool {
-    StdPipe::fmt_supported(StdPipe::StdErr)
+    self::unix::fmt_supported(self::unix::StdPipe::StdErr)
 }
 
 /// Should I use formatting on stdout?
 ///
-/// Convenience helper, taking user preference, and checking support. Returns `true` for yes,
-/// `false` for no.
+/// Convenience helper, taking user preference, and checking support. Combines them to give an
+/// answer of `true` for yes, `false` for no.
+///
+/// Only available on non-Windows.
+#[cfg(not(windows))]
+#[inline(always)]
 pub fn use_fmt_stdout(user_pref: bool) -> bool {
-    user_pref && StdPipe::fmt_supported(StdPipe::StdOut)
+    user_pref && fmt_supported_stdout()
 }
 
 /// Should I use formatting on stderr?
 ///
-/// Convenience helper, taking user preference, and checking support. Returns `true` for yes,
-/// `false` for no.
+/// Convenience helper, taking user preference, and checking support. Combines them to give an
+/// answer of `true` for yes, `false` for no.
+///
+/// Only available on non-Windows.
+#[cfg(not(windows))]
+#[inline(always)]
 pub fn use_fmt_stderr(user_pref: bool) -> bool {
-    user_pref && StdPipe::fmt_supported(StdPipe::StdErr)
-}
-
-//NOTE: This **MUST** be public, else implementation is hidden!
-/// Used for consistent cross-platform implementation
-pub trait FmtSupported {
-    /// Are format sequences supported on `self`?
-    ///
-    /// - On Unix: Returns `false` if not a tty or is `StdPipe::StdIn`
-    /// - On Window: Always return `false`
-    fn fmt_supported(self) -> bool;
+    user_pref && fmt_supported_stderr()
 }
 
 #[cfg(not(windows))]
 mod unix {
     use libc;
-    use super::FmtSupported;
 
     #[repr(u8)]
     #[derive(Debug, Copy, Clone, PartialEq, Eq)]
     pub enum StdPipe {
-        StdIn = libc::STDIN_FILENO as u8,
+        //StdIn = libc::STDIN_FILENO as u8, // N/a
         StdOut = libc::STDOUT_FILENO as u8,
         StdErr = libc::STDERR_FILENO as u8,
     }
@@ -291,35 +291,11 @@ mod unix {
         fn from(p: StdPipe) -> Self { p as libc::c_int }
     }
 
-    impl FmtSupported for StdPipe {
-        fn fmt_supported(self) -> bool {
-            match self {
-                StdPipe::StdIn => false,
-                _ => match unsafe { libc::isatty(libc::c_int::from(self)) } {
-                    0 => false,
-                    _ => true,
-                },
-            }
-        }
-    }
-}
-
-#[cfg(windows)]
-mod windows {
-    use super::FmtSupported;
-
-    #[repr(u8)]
-    #[derive(Debug, Copy, Clone, PartialEq, Eq)]
-    pub enum StdPipe {
-        StdIn,
-        StdOut,
-        StdErr,
-    }
-
-    impl FmtSupported for StdPipe {
-        #[inline(always)]
-        fn fmt_supported(self) -> bool {
-            false
-        }
+    /// Are format sequences supported on the specified pipe?
+    ///
+    /// Returns `false` if not a tty.
+    #[inline(always)]
+    pub fn fmt_supported(pipe: StdPipe) -> bool {
+        unsafe { libc::isatty(libc::c_int::from(pipe)) != 0 }
     }
 }

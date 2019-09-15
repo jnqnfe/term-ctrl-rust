@@ -34,64 +34,18 @@ fn predefines() {
 mod platform {
     use super::*;
 
-    /* On non-Windows:
-     * - It should always return false for `StdPipe::StdIn`
-     * - Stdout/stderr have dynamic support however, depending on whether connected to a tty
-     *
-     * How to handle this dynamic situation?
-     *  1. We could not bother to compare the returned value, just that the functions are reachable?
-     *  2. We could assume that stdout/stderr will always be a tty in running tests?
-     *  3. We could try to be fancy and set up both types of pipes, if possible?
-     */
-    //TODO: Consider switching to option #3?
-
     #[test]
-    fn fmt_supported_shortcuts() {
-        // Dynamic, assuming test env has them connected to tty
+    fn fmt_supported() {
+        // Assuming test env has them connected to tty
         assert_eq!(true, fmt_supported_stdout());
         assert_eq!(true, fmt_supported_stderr());
     }
 
     #[test]
-    fn fmt_supported() {
-        // Note, stdin obviously never supports formatted output!
-        assert_eq!(false, StdPipe::fmt_supported(StdPipe::StdIn));
-        // Dynamic, assuming test env has them connected to tty
-        assert_eq!(true, StdPipe::fmt_supported(StdPipe::StdOut));
-        assert_eq!(true, StdPipe::fmt_supported(StdPipe::StdErr));
-    }
-
-    #[test]
     fn fmt_supported_withpref() {
-        // Dynamic, assuming test env has them connected to tty
+        // Assuming test env has them connected to tty
         assert_eq!(true, use_fmt_stdout(true));
         assert_eq!(true, use_fmt_stderr(true));
-        assert_eq!(false, use_fmt_stdout(false));
-        assert_eq!(false, use_fmt_stderr(false));
-    }
-}
-
-#[cfg(windows)]
-mod platform {
-    use super::*;
-
-    #[test]
-    fn fmt_supported_shortcuts() {
-        assert_eq!(false, fmt_supported_stdout());
-        assert_eq!(false, fmt_supported_stderr());
-    }
-
-    #[test]
-    fn fmt_supported() {
-        assert_eq!(false, StdPipe::fmt_supported(StdPipe::StdIn));
-        assert_eq!(false, StdPipe::fmt_supported(StdPipe::StdOut));
-        assert_eq!(false, StdPipe::fmt_supported(StdPipe::StdErr));
-    }
-
-    #[test]
-    fn fmt_supported_withpref() {
-        assert_eq!(false, use_fmt_stdout(true));
-        assert_eq!(false, use_fmt_stderr(true));
         assert_eq!(false, use_fmt_stdout(false));
         assert_eq!(false, use_fmt_stderr(false));
     }
