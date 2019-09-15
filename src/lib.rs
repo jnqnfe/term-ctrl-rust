@@ -13,9 +13,10 @@
 //! output sent to the console/terminal. This special sequence will be interpreted by the
 //! console/terminal when it displays the output.
 //!
-//! This is not available on Windows (apparently), and should only be used otherwise when stdout is
-//! actually a tty (you wouldn't want these control sequences to exist in output that the user is
-//! piping into a text file or another program).
+//! This should only be done when stdout (or stderr as applicable) is connected to a tty that will
+//! actually process and use them (you wouldn't want these control sequences to exist in output that
+//! the user is piping into a text file or another program, it will just become a part of the text
+//! and lead to confusion).
 //!
 //! This crate provides tools and pre-defined definitions to assist in using these effects.
 //!
@@ -89,8 +90,7 @@
 
 #![no_std]
 
-#[cfg(not(windows))]
-extern crate libc;
+extern crate atty;
 #[cfg(windows)]
 extern crate winapi;
 

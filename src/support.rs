@@ -8,74 +8,57 @@
 
 //! Formatted output support helpers
 
-#[cfg(not(windows))]
-pub use self::unix::*;
-
-#[cfg(not(windows))]
-mod unix {
-    use libc;
-
-    #[repr(u8)]
-    #[derive(Debug, Copy, Clone, PartialEq, Eq)]
-    enum StdPipe {
-        //StdIn = libc::STDIN_FILENO as u8, // N/a
-        StdOut = libc::STDOUT_FILENO as u8,
-        StdErr = libc::STDERR_FILENO as u8,
-    }
-
-    impl From<StdPipe> for libc::c_int {
-        fn from(p: StdPipe) -> Self { p as libc::c_int }
-    }
-
-    /// Are format sequences supported on stdout? Returns `false` if stdout is not a tty.
-    ///
-    /// Only available on non-Windows.
-    #[inline(always)]
-    pub fn fmt_supported_stdout() -> bool {
-        fmt_supported(StdPipe::StdOut)
-    }
-
-    /// Are format sequences supported on stderr? Returns `false` if stderr is not a tty.
-    ///
-    /// Only available on non-Windows.
-    #[inline(always)]
-    pub fn fmt_supported_stderr() -> bool {
-        fmt_supported(StdPipe::StdErr)
-    }
-
-    /// Should I use formatting on stdout?
-    ///
-    /// Convenience helper, taking user preference, and checking support. Combines them to give an
-    /// answer of `true` for yes, `false` for no.
-    ///
-    /// Only available on non-Windows.
-    #[inline(always)]
-    pub fn use_fmt_stdout(user_pref: bool) -> bool {
-        user_pref && fmt_supported_stdout()
-    }
-
-    /// Should I use formatting on stderr?
-    ///
-    /// Convenience helper, taking user preference, and checking support. Combines them to give an
-    /// answer of `true` for yes, `false` for no.
-    ///
-    /// Only available on non-Windows.
-    #[inline(always)]
-    pub fn use_fmt_stderr(user_pref: bool) -> bool {
-        user_pref && fmt_supported_stderr()
-    }
-
-
-    /// Are format sequences supported on the specified pipe?
-    ///
-    /// Returns `false` if not a tty.
-    #[inline(always)]
-    fn fmt_supported(pipe: StdPipe) -> bool {
-        unsafe { libc::isatty(libc::c_int::from(pipe)) != 0 }
-    }
+/// Are ANSI format sequences supported on stdout?
+///
+/// - On Unix this is reliable, returning `true` only if **stdout** is connected to a tty (as
+///   opposed to being redirected to a file or other program).
+/// - On Windows, this gives an answer on the same principle, however even if returning `true` such
+///   that we know we are connected to a terminal, this does not mean that the terminal actually
+///   supports ANSI control sequences. Before Windows 10 you should assume not. On Windows 10+ you
+///   must use the [`enable_ansi_support`] to turn on support.
+///
+/// [`enable_ansi_support`]: fn.enable_ansi_support.html
+#[inline(always)]
+pub fn fmt_supported_stdout() -> bool {
+    atty::is(atty::Stream::Stdout)
 }
 
-// Copied and slightly modified from the `ansi_term` crate (MIT licensed).
+/// Are ANSI format sequences supported on stderr?
+///
+/// - On Unix this is reliable, returning `true` only if **stderr** is connected to a tty (as
+///   opposed to being redirected to a file or other program).
+/// - On Windows, this gives an answer on the same principle, however even if returning `true` such
+///   that we know we are connected to a terminal, this does not mean that the terminal actually
+///   supports ANSI control sequences. Before Windows 10 you should assume not. On Windows 10+ you
+///   must use the [`enable_ansi_support`] to turn on support.
+///
+/// [`enable_ansi_support`]: fn.enable_ansi_support.html
+#[inline(always)]
+pub fn fmt_supported_stderr() -> bool {
+    atty::is(atty::Stream::Stderr)
+}
+
+/// Should I use formatting on stdout?
+///
+/// Convenience helper, taking user preference, and checking support. Combines them to give an
+/// answer of `true` for yes, `false` for no.
+#[inline(always)]
+pub fn use_fmt_stdout(user_pref: bool) -> bool {
+    user_pref && fmt_supported_stdout()
+}
+
+/// Should I use formatting on stderr?
+///
+/// Convenience helper, taking user preference, and checking support. Combines them to give an
+/// answer of `true` for yes, `false` for no.
+#[inline(always)]
+pub fn use_fmt_stderr(user_pref: bool) -> bool {
+    user_pref && fmt_supported_stderr()
+}
+
+/*
+  Copied and slightly modified from the `ansi_term` crate (MIT licensed).
+*/
 /// Enables ANSI code support on Windows 10.
 ///
 /// This uses Windows API calls to alter the properties of the console that

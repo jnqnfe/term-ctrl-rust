@@ -13,8 +13,8 @@ readme = "README.md"
 edition = "2018"
 publish = false
 
-[target.'cfg(not(windows))'.dependencies]
-libc = { version = "0.2", default-features = false } #no `use_std`
+[dependencies]
+atty = "0.2"
 
 [target.'cfg(windows)'.dependencies]
 winapi = { version = "0.3", features = ["errhandlingapi", "consoleapi", "processenv"] }
