@@ -37,16 +37,16 @@ mod platform {
     #[test]
     fn fmt_supported() {
         // Assuming test env has them connected to tty
-        assert_eq!(true, fmt_supported_stdout());
-        assert_eq!(true, fmt_supported_stderr());
+        assert_eq!(true, support::fmt_supported_stdout());
+        assert_eq!(true, support::fmt_supported_stderr());
     }
 
     #[test]
     fn fmt_supported_withpref() {
         // Assuming test env has them connected to tty
-        assert_eq!(true, use_fmt_stdout(true));
-        assert_eq!(true, use_fmt_stderr(true));
-        assert_eq!(false, use_fmt_stdout(false));
-        assert_eq!(false, use_fmt_stderr(false));
+        assert_eq!(true, support::use_fmt_stdout(true));
+        assert_eq!(true, support::use_fmt_stderr(true));
+        assert_eq!(false, support::use_fmt_stdout(false));
+        assert_eq!(false, support::use_fmt_stderr(false));
     }
 }
