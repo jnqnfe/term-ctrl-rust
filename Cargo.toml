@@ -18,3 +18,6 @@ libc = { version = "0.2", default-features = false } #no `use_std`
 
 [target.'cfg(windows)'.dependencies]
 winapi = { version = "0.3", features = ["errhandlingapi", "consoleapi", "processenv"] }
+
+[badges]
+travis-ci = { repository = "jnqnfe/term-ctrl-rust" }

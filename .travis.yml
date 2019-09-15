@@ -1,0 +1,16 @@
+language: rust
+os:
+  - linux
+  - windows
+  - osx
+rust:
+  - 1.31.0 # Minimum supported version
+  - stable
+  - beta
+  - nightly
+matrix:
+  allow_failures:
+    - rust: nightly
+script:
+  - cargo check --verbose
+  - cargo test --verbose
