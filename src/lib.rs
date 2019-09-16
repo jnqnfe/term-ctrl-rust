@@ -111,6 +111,10 @@
 //! assert_eq!("\u{1B}[1;2;3m", seq!("1;2", 3));
 //! ```
 //!
+//! Convenience macros are also provided for constructing 256-colour and RGB colour code sets for
+//! use in a sequence (they do not generate the full sequence, just a multi-code set of numbers to
+//! use in a sequence).
+//!
 //! ## Number chart
 //!
 //! The following is a guide to the available number codes and what they correspond to. In most
@@ -183,7 +187,7 @@ extern crate winapi;
 pub mod predefined;
 pub mod support;
 
-/// Macro for constructing control sequences
+/// Constructs a control sequence
 ///
 /// A sequence can be created with one or more numbers separated by commas.
 ///
@@ -202,4 +206,68 @@ macro_rules! seq {
     ($n1:expr, $($n2:expr,)*) => { concat!("\u{1B}[", $n1, $(concat!(";", $n2)),*, "m") };
     ($n:expr) => { concat!("\u{1B}[", $n, "m") };
     () => { "" };
+}
+
+/// Constructs a 256-colour foreground (text) colour code set (to be used in a control sequence)
+///
+/// # Examples:
+///
+/// ```rust
+/// # use term_ctrl::{seq, c256_fg};
+/// // Get the codes
+/// assert_eq!("38;5;238", c256_fg!(238));
+/// // Use in a sequence
+/// assert_eq!("\u{1B}[38;5;238m", seq!(c256_fg!(238)));
+/// ```
+#[macro_export]
+macro_rules! c256_fg {
+    ($col:expr) => { concat!("38;5", $col) };
+}
+
+/// Constructs a 256-colour background colour code set (to be used in a control sequence)
+///
+/// # Examples:
+///
+/// ```rust
+/// # use term_ctrl::{seq, c256_bg};
+/// // Get the codes
+/// assert_eq!("48;5;238", c256_bg!(238));
+/// // Use in a sequence
+/// assert_eq!("\u{1B}[48;5;238m", seq!(c256_bg!(238)));
+/// ```
+#[macro_export]
+macro_rules! c256_bg {
+    ($col:expr) => { concat!("48;5", $col) };
+}
+
+/// Constructs an RGB foreground (text) colour code set (to be used in a control sequence)
+///
+/// # Examples:
+///
+/// ```rust
+/// # use term_ctrl::{seq, rgb_fg};
+/// // Get the RGB codes
+/// assert_eq!("38;2;180;15;70", rgb_fg!(180, 15, 70));
+/// // Use in a sequence
+/// assert_eq!("\u{1B}[38;2;180;15;70m", seq!(rgb_fg!(180, 15, 70)));
+/// ```
+#[macro_export]
+macro_rules! rgb_fg {
+    ($red:expr, $green:expr, $blue:expr) => { concat!("38;2;", $red, ";", $green, ";", $blue) };
+}
+
+/// Constructs an RGB background colour code set (to be used in a control sequence)
+///
+/// # Examples:
+///
+/// ```rust
+/// # use term_ctrl::{seq, rgb_bg};
+/// // Get the RGB codes
+/// assert_eq!("48;2;180;15;70", rgb_bg!(180, 15, 70));
+/// // Use in a sequence
+/// assert_eq!("\u{1B}[48;2;180;15;70m", seq!(rgb_bg!(180, 15, 70)));
+/// ```
+#[macro_export]
+macro_rules! rgb_bg {
+    ($red:expr, $green:expr, $blue:expr) => { concat!("48;2;", $red, ";", $green, ";", $blue) };
 }
