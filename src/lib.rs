@@ -72,7 +72,7 @@
 //! The sequence pattern consists of four component parts:
 //!
 //! <table style="width:auto">
-//!     <tr><td>1</td><td>'\u{1B}'</td><td>The escape (␛) char, Unicode 0x1B</td></tr>
+//!     <tr><td>1</td><td>ESC ('\u{1B}')</td><td>The escape (␛) char, Unicode 0x1B</td></tr>
 //!     <tr><td>2</td><td>'['</td><td>An opening bracket char</td></tr>
 //!     <tr><td>3</td><td colspan="2">One or more numbers using a semi-colon (';') as a separator</td></tr>
 //!     <tr><td>4</td><td>'m'</td><td>A lower-case letter m</td></tr>
@@ -125,26 +125,29 @@
 //!
 //! ### Effects
 //!
-//!  - `0`: Normal (reset)
-//!  - `1`: Bold
-//!  - `2`: Dim (faint)
-//!  - `3`: Italic
-//!  - `4`: Underlined
-//!  - `5`: Blink
-//!  - `6`: *<unused?>*
-//!  - `7`: “Inverse”
-//!  - `8`: Invisible (hidden)
-//!  - `9`: Strike-through
-//!  - `10-20`: *<unused?>*
-//!  - `21`: Double-underline
-//!  - `22`: Remove bold and faint effects
-//!  - `23`: Remove italic effect
-//!  - `24`: Remove underline effect
-//!  - `25`: Remove blink effect (aka “steady”)
-//!  - `26`: *<unused?>*
-//!  - `27`: Remove inverse effect (aka “positive”)
-//!  - `28`: Remove invisible effect (aka “visible”)
-//!  - `29`: Remove strike-through effect
+//! <table>
+//!     <thead>
+//!         <tr><th>Code</th><th>Effect</th><th>Code</th><th>Effect</th></tr>
+//!     </thead>
+//!     <tbody>
+//!         <tr><td>0</td><td>Normal (reset)</td><td>20</td><td><em>unused?</em></td></tr>
+//!         <tr><td>1</td><td>Bold</td><td>21</td><td>Double-underline</td></tr>
+//!         <tr><td>2</td><td>Dim (faint)</td><td>22</td><td>Remove bold and dim</td></tr>
+//!         <tr><td>3</td><td>Italic</td><td>23</td><td>Remove italic</td></tr>
+//!         <tr><td>4</td><td>Underlined</td><td>24</td><td>Remove underline</td></tr>
+//!         <tr><td>5</td><td>Blink</td><td>25</td><td>Remove blink (aka “steady”)</td></tr>
+//!         <tr><td>6</td><td><em>unused?</em></td><td>26</td><td><em>unused?</em></td></tr>
+//!         <tr><td>7</td><td>“Inverse”</td><td>27</td><td>Remove inverse effect (aka “positive”)</td></tr>
+//!         <tr><td>8</td><td>Invisible (hidden)</td><td>28</td><td>Remove invisible effect (aka “visible”)</td></tr>
+//!         <tr><td>9</td><td>Strike-through</td><td>29</td><td>Remove strike-through effect</td></tr>
+//!     </tbody>
+//! </table>
+//!
+//! Code zero (`0`) resets all effects and colour selections to defaults.
+//!
+//! Note that while code `21` has an additional form of underline effect, codes `22`-`29` provide
+//! codes for removing specific effects, with `22` removing both bold and dim effects together,
+//! otherwise the last digit corresponds to the effect removed (e.g. `3` and `23` relate to italic).
 //!
 //! ### Basic colours
 //!
