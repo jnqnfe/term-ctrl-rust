@@ -117,19 +117,7 @@
 //! cases a single number code corresponds to a single effect, however there are also those that
 //! require a sequence of multiple numbers (with the normal semi-colon separator).
 //!
-//! Single number code overview:
-//!
-//!  - Effects: `0`-`9`
-//!  - Colours:
-//!     - Text (foreground): `30`-`37`
-//!     - Background: `40`-`47`
-//!     - Bright text (foreground): `90`-`97`
-//!     - Bright background: `100`-`107`
-//!
-//! It is also possible to express *extended* colours using a multi-number sequence, as explained
-//! shortly.
-//!
-//! The effects, specifically, are:
+//! ### Effects
 //!
 //!  - `0`: Normal (reset)
 //!  - `1`: Bold
@@ -142,8 +130,14 @@
 //!  - `8`: Invisible (hidden)
 //!  - `9`: Strike-through
 //!
-//! With respect to the basic colour set ranges, the last digit of the number corresponds to a
-//! colour as follows:
+//! ### Basic colours
+//!
+//!  - Text (foreground): `30`-`37`
+//!  - Background: `40`-`47`
+//!  - Bright text (foreground): `90`-`97`
+//!  - Bright background: `100`-`107`
+//!
+//! The last digit of the number corresponds to a colour as follows:
 //!
 //!  - `_0`: Black
 //!  - `_1`: Red
@@ -157,22 +151,25 @@
 //!
 //! So for instance `32` means green text.
 //!
-//! With respect to *extended* colours, these are expressed using multiple numbers, starting with
-//! `_8` from one of the basic colour sets. There are two choices available here:
+//! ### Extended range colours
 //!
-//!  - The “extended” 256-colour palette: This uses three numbers. The first was just explained; the
-//!    second must be `5`; and the third should be a value in the range `0`-`255`, corresponding to
-//!    an *extended* colour from a set of 256 available colours.
-//!  - The full 24-bit RGB colour palette: This uses five numbers. The first was just explained; the
-//!    second must be `2`; and the last three are RGB (red, green, and blue) values, each in the
-//!    range `0`-`255`.
+//! Wider choice of colours than above is made available as *extended* colours through use of a
+//! sequence of codes (using the normal semi-colon separator).
 //!
-//! For instance:
+//! There are two ranges available, an 8-bit (256 colour) range, and a 24-bit RGB range. Both begin
+//! with either `38` to choose text (foreground colouring) or `48` for background colouring. This is
+//! followed by `5` for specifying 256-colour or `2` for specifying RGB colour. With 256-colour a
+//! final third number with a value in the range of 0-255 selects the specific colour. With RGB,
+//! three numbers must be given, each corresponding to red, green and blue respectively, and each
+//! also being of a value inthe range 0-255.
 //!
-//!  - `seq!(38,5,238)` would select colour `238` from the “extended” 256-colour palette, as a text
-//!    colour (since `38` was used).
-//!  - `seq!(48,2,180,15,70)` would specify red=180, green=15, and blue=70 as a background colour
-//!    from the 24-bit RGB colour range.
+//! As an example, `seq!(38,5,238)` changes the colour of text (not background) since it starts with
+//! `38`, it is providing a 256-colour palette selection (the `5`), and is specifically selecting
+//! colour `238` from that palette.
+//!
+//! As another example, `seq!(48,2,180,15,70)` changes the colour of the text background since it
+//! starts with `48`, it is providing an RGB colour (the `2`), and is then followed with RGB values
+//! of `180` for red, `15` for green and `70` for blue.
 //!
 //! [support mod]: support/index.html
 //! [`seq`]: macro.seq.html
