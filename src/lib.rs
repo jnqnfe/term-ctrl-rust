@@ -71,10 +71,12 @@
 //!
 //! The sequence pattern consists of four component parts:
 //!
-//!  1. `'\u{1B}'` (the escape `char`, Unicode 0x1B)
-//!  2. `'['` (an opening bracket `char`)
-//!  3. One or more numbers using a semi-colon (`';'`) as a separator
-//!  4. `'m'` (a lower-case letter m)
+//! <table style="width:auto">
+//!     <tr><td>1</td><td>'\u{1B}'</td><td>The escape (␛) char, Unicode 0x1B</td></tr>
+//!     <tr><td>2</td><td>'['</td><td>An opening bracket char</td></tr>
+//!     <tr><td>3</td><td colspan="2">One or more numbers using a semi-colon (';') as a separator</td></tr>
+//!     <tr><td>4</td><td>'m'</td><td>A lower-case letter m</td></tr>
+//! </table>
 //!
 //! In other words a pattern of: `"\u{1B}[` <em><codes\></em> `m"`
 //!
