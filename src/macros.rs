@@ -8,28 +8,6 @@
 
 //! Macros
 
-/// Constructs a code set (to be used in a control sequence)
-///
-/// This simply turns a sequence of numbers into a string with a semi-colon separator.
-///
-/// Note that this will actually happily accept strings also, not just numeric literals.
-///
-/// # Examples:
-///
-/// ```rust
-/// # use term_ctrl::codes;
-/// assert_eq!("1", codes!(1));
-/// assert_eq!("1;2;3", codes!(1, 2, 3));
-/// assert_eq!("1;2;3;4;5", codes!(1, "2;3;4", 5));
-/// ```
-#[macro_export]
-macro_rules! codes {
-    ($n1:expr, $($n2:expr),*) => { concat!($n1, $(concat!(";", $n2)),*) };
-    ($n1:expr, $($n2:expr,)*) => { concat!($n1, $(concat!(";", $n2)),*) };
-    ($n:expr) => { concat!($n) };
-    () => { "" };
-}
-
 /// Constructs a control sequence
 ///
 /// A sequence can be created with one or more numbers separated by commas.
@@ -45,9 +23,34 @@ macro_rules! codes {
 /// ```
 #[macro_export]
 macro_rules! seq {
-    ($($n:expr),*) => { concat!("\u{1B}[", $crate::codes!($($n),*), "m") };
-    ($($n:expr,)*) => { concat!("\u{1B}[", $crate::codes!($($n),*), "m") };
+    ($n1:expr, $($n2:expr),*) => { concat!("\u{1B}[", $n1, $(concat!(";", $n2)),*, "m") };
+    ($n1:expr, $($n2:expr,)*) => { concat!("\u{1B}[", $n1, $(concat!(";", $n2)),*, "m") };
     ($n:expr) => { concat!("\u{1B}[", $n, "m") };
+    () => { "" };
+}
+
+/// Constructs a code set (to be used in a control sequence)
+///
+/// This simply turns a sequence of numbers into a string with a semi-colon separator.
+///
+/// Note that this will actually happily accept strings also, not just numeric literals.
+///
+/// # Examples:
+///
+/// ```rust
+/// # use term_ctrl::{seq, codes};
+/// assert_eq!("1", codes!(1));
+/// assert_eq!("1;2;3", codes!(1, 2, 3));
+/// assert_eq!("1;2;3;4;5", codes!(1, "2;3;4", 5));
+/// // Use in a sequence
+/// assert_eq!("\u{1B}[1;2;3m", seq!(codes!(1,2,3)));
+/// assert_eq!("\u{1B}[1;2;3;4;5;6m", seq!(1,2,codes!(3,4,5),6));
+/// ```
+#[macro_export]
+macro_rules! codes {
+    ($n1:expr, $($n2:expr),*) => { concat!($n1, $(concat!(";", $n2)),*) };
+    ($n1:expr, $($n2:expr,)*) => { concat!($n1, $(concat!(";", $n2)),*) };
+    ($n:expr) => { concat!($n) };
     () => { "" };
 }
 
@@ -64,7 +67,7 @@ macro_rules! seq {
 /// ```
 #[macro_export]
 macro_rules! c256_fg {
-    ($col:expr) => { $crate::codes!(38, 5, $col) };
+    ($col:expr) => { concat!("38;5;", $col) };
 }
 
 /// Constructs a 256-colour background colour code set (to be used in a control sequence)
@@ -80,7 +83,7 @@ macro_rules! c256_fg {
 /// ```
 #[macro_export]
 macro_rules! c256_bg {
-    ($col:expr) => { $crate::codes!(48, 5, $col) };
+    ($col:expr) => { concat!("48;5;", $col) };
 }
 
 /// Constructs an RGB foreground (text) colour code set (to be used in a control sequence)
@@ -96,7 +99,7 @@ macro_rules! c256_bg {
 /// ```
 #[macro_export]
 macro_rules! rgb_fg {
-    ($red:expr, $green:expr, $blue:expr) => { $crate::codes!(38, 2, $red, $green, $blue) };
+    ($red:expr, $green:expr, $blue:expr) => { concat!("38;2;", $red, ";", $green, ";", $blue) };
 }
 
 /// Constructs an RGB background colour code set (to be used in a control sequence)
@@ -112,5 +115,5 @@ macro_rules! rgb_fg {
 /// ```
 #[macro_export]
 macro_rules! rgb_bg {
-    ($red:expr, $green:expr, $blue:expr) => { $crate::codes!(48, 2, $red, $green, $blue) };
+    ($red:expr, $green:expr, $blue:expr) => { concat!("48;2;", $red, ";", $green, ";", $blue) };
 }
