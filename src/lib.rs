@@ -185,6 +185,8 @@
 //! colour. With RGB, three numbers must be given, each corresponding to red, green and blue
 //! respectively, and each also being of a value in the range 0-255.
 //!
+//! [See here][Xterm_256color_chart.svg] for a 256-colour chart.
+//!
 //! As an example, `seq!(38,5,238)` changes the colour of text (not background) since it starts with
 //! `38`, it is providing a 256-colour palette selection (the `5`), and is specifically selecting
 //! colour `238` from that palette.
@@ -195,6 +197,7 @@
 //!
 //! [support mod]: support/index.html
 //! [`seq`]: macro.seq.html
+//! [Xterm_256color_chart.svg]: https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 
 #![no_std]
 
