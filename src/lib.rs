@@ -116,7 +116,7 @@
 //! The available numbers consist of the following (divided up into related groups):
 //!
 //!  - Reset: `0`
-//!  - Effects: `1`-`7`
+//!  - Effects: `1`-`9`
 //!  - Basic colours:
 //!     - `30`-`37` for text colour (set #1)
 //!     - `40`-`47` for background-highlight colour (set #1)
