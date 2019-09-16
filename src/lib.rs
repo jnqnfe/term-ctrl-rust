@@ -88,11 +88,13 @@
 //! Typically each of the individual numbers given corresponds to a particular effect, however as we
 //! will see shortly there are a couple of exceptions where multiple numbers are used.
 //!
-//! Before we continue, understand that the effects specified are applied in sequence and are
-//! applied cumulatively both with respect to previous effects in the same sequence and also to any
-//! existing effects still in effect from a previous sequence. There are specific codes for removing
-//! specific effects or resetting foreground or background-highlight colours. There is also the
-//! catch-all code `0` for resetting everything to normal.
+//! Before we continue, understand that the effects specified are applied in sequence and remain in
+//! effect until changed or reset by a subsequent code in the sequence or by such a code in a later
+//! sequence. Hence in the example given shortly, a sequence is used to enable red text, then some
+//! text to which this applies is output, then a new sequence that issues the reset-all code is
+//! used. There are codes available for removing specific effects or resetting just foreground or
+//! background-highlight colours. There is also the catch-all code `0` for resetting everything to
+//! normal.
 //!
 //! ## Macro construction
 //!
