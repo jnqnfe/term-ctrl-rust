@@ -132,16 +132,16 @@
 //!         <tr><th>Code</th><th>Effect</th><th>Code</th><th>Effect</th></tr>
 //!     </thead>
 //!     <tbody>
-//!         <tr><td>0</td><td>Normal (reset)</td><td>20</td><td><a href="https://en.wikipedia.org/wiki/Fraktur_(script)">Fraktur</a></td></tr>
-//!         <tr><td>1</td><td>Bold (increase intensity)</td><td>21</td><td>Double-underline</td></tr>
-//!         <tr><td>2</td><td>Dim (faint, or decrease intensity)</td><td>22</td><td>Remove bold and dim</td></tr>
-//!         <tr><td>3</td><td>Italic</td><td>23</td><td>Remove italic and Fraktur</td></tr>
-//!         <tr><td>4</td><td>Underlined</td><td>24</td><td>Remove underline (and double-underline)</td></tr>
-//!         <tr><td>5</td><td>Blink</td><td>25</td><td>Remove blink (aka “steady”)</td></tr>
-//!         <tr><td>6</td><td>Rapid-blink</td><td>26</td><td><em>unused?</em></td></tr>
-//!         <tr><td>7</td><td>“Inverse” (swap fg/bg colours)</td><td>27</td><td>Remove inverse effect (aka “positive”)</td></tr>
-//!         <tr><td>8</td><td>Invisible (hidden)</td><td>28</td><td>Remove invisible effect (aka “visible”)</td></tr>
-//!         <tr><td>9</td><td>Strike-through</td><td>29</td><td>Remove strike-through effect</td></tr>
+//!         <tr><td>0</td><td>Normal (reset)</td><td>20</td><td><a href="https://en.wikipedia.org/wiki/Fraktur_(script)">Fraktur</a> on</td></tr>
+//!         <tr><td>1</td><td>Bold on (increase intensity)</td><td>21</td><td>Double-underline on</td></tr>
+//!         <tr><td>2</td><td>Dim on (faint, or decrease intensity)</td><td>22</td><td>Bold and dim off</td></tr>
+//!         <tr><td>3</td><td>Italic on</td><td>23</td><td>Italic and Fraktur off</td></tr>
+//!         <tr><td>4</td><td>Underline on</td><td>24</td><td>Underline (and double-underline) off</td></tr>
+//!         <tr><td>5</td><td>Blink on</td><td>25</td><td>Blink off (aka “steady”)</td></tr>
+//!         <tr><td>6</td><td>Rapid-blink on</td><td>26</td><td><em>unused?</em></td></tr>
+//!         <tr><td>7</td><td>“Inverse” on (swap fg/bg colours)</td><td>27</td><td>Inverse off (aka “positive”)</td></tr>
+//!         <tr><td>8</td><td>Invisible (hidden) on</td><td>28</td><td>Invisible off (aka “visible”)</td></tr>
+//!         <tr><td>9</td><td>Strike-through on</td><td>29</td><td>Strike-through off</td></tr>
 //!     </tbody>
 //! </table>
 //!
