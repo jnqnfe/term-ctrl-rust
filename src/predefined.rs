@@ -110,6 +110,8 @@ pub mod fonts {
 pub mod colours {
     use super::seq;
 
+    /// Reset both foreground and background colours
+    pub const RESET:    &str = seq!(39, 49);
     /// Alias for resetting foreground colour
     pub const RESET_FG: &str = fg::RESET;
     /// Alias for resetting background colour
