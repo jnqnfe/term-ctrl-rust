@@ -178,6 +178,46 @@ pub mod colours {
     }
 }
 
+/// Miscellaneous
+pub mod misc {
+    use super::seq;
+
+    /// Framed
+    pub const FRAMED:    &str = seq!(51);
+    /// Encircled
+    pub const ENCIRCLED: &str = seq!(52);
+    /// Overlined
+    pub const OVERLINED: &str = seq!(53);
+
+    /// Remove misc effects
+    pub mod remove {
+        use super::seq;
+
+        /// Remove framed and encircled effects
+        pub const FRAMED_ENCIRCLED: &str = seq!(54);
+        /// Remove overlined effects
+        pub const OVERLINED:        &str = seq!(55);
+    }
+
+    /// Ideogram stuff
+    pub mod ideogram {
+        use super::seq;
+
+        /// Ideogram underline or right side line
+        pub const UNDERLINE:      &str = seq!(60);
+        /// Ideogram double underline or double line on the right side
+        pub const DBL_UNDERLINE:  &str = seq!(61);
+        /// Ideogram overline or left side line
+        pub const OVERLINE:       &str = seq!(62);
+        /// Ideogram double overline or double line on the left side
+        pub const DBL_OVERLINE:   &str = seq!(63);
+        /// Ideogram stress marking
+        pub const STRESS_MARKING: &str = seq!(64);
+        /// Ideogram attributes off
+        pub const RESET:          &str = seq!(65);
+    }
+}
+
 /// Combinations
 pub mod combinations {
     use super::seq;
