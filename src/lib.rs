@@ -138,7 +138,7 @@
 //!         <tr><td>3</td><td>Italic</td><td>23</td><td>Remove italic</td></tr>
 //!         <tr><td>4</td><td>Underlined</td><td>24</td><td>Remove underline (and double-underline)</td></tr>
 //!         <tr><td>5</td><td>Blink</td><td>25</td><td>Remove blink (aka “steady”)</td></tr>
-//!         <tr><td>6</td><td><em>unused?</em></td><td>26</td><td><em>unused?</em></td></tr>
+//!         <tr><td>6</td><td>Rapid-blink</td><td>26</td><td><em>unused?</em></td></tr>
 //!         <tr><td>7</td><td>“Inverse” (swap fg/bg colours)</td><td>27</td><td>Remove inverse effect (aka “positive”)</td></tr>
 //!         <tr><td>8</td><td>Invisible (hidden)</td><td>28</td><td>Remove invisible effect (aka “visible”)</td></tr>
 //!         <tr><td>9</td><td>Strike-through</td><td>29</td><td>Remove strike-through effect</td></tr>

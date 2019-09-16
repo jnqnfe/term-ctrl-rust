@@ -21,24 +21,25 @@ pub mod effects {
     use super::seq;
 
     /// Alias for reset-all
-    pub const NORMAL:    &str = super::RESET;
+    pub const NORMAL:      &str = super::RESET;
     /// Bold (increase intensity)
-    pub const BOLD:      &str = seq!(1);
+    pub const BOLD:        &str = seq!(1);
     /// Dim (aka faint; decrease intensity)
-    pub const DIM:       &str = seq!(2);
+    pub const DIM:         &str = seq!(2);
     /// Italic
-    pub const ITALIC:    &str = seq!(3);
+    pub const ITALIC:      &str = seq!(3);
     /// Underline
-    pub const UNDERLINE: &str = seq!(4);
+    pub const UNDERLINE:   &str = seq!(4);
     /// Blink
-    pub const BLINK:     &str = seq!(5);
-    /* `6` is unused? */
+    pub const BLINK:       &str = seq!(5);
+    /// Rapid-blink
+    pub const RAPID_BLINK: &str = seq!(6);
     /// Inverse (swap foreground/background colours)
-    pub const INVERSE:   &str = seq!(7);
+    pub const INVERSE:     &str = seq!(7);
     /// Invisible (hidden)
-    pub const INVISIBLE: &str = seq!(8);
+    pub const INVISIBLE:   &str = seq!(8);
     /// Strike-through
-    pub const STRIKE:    &str = seq!(9);
+    pub const STRIKE:      &str = seq!(9);
 
     /* `10`-`20` are unused? */
 
