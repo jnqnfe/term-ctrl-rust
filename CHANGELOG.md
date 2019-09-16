@@ -1,3 +1,21 @@
+# <unreleased>
+
+ * Re-organised the predefines
+ * Added various additional predefines
+ * Renamed the `REVERSE` predefine to the more correct term `INVERSE`
+ * Extended, corrected and otherwise further improved the documentation
+ * Added helper macros for generating code groupings for use in sequences, including the generic
+   `codes`, along with those specifically for specifying 256-colour and RGB colour palette
+   selections: `c256_fg`, `c256_bg`, `rgb_fg` and `rgb_bg`.
+ * Added a `codes` mod. While the `predefines` mod offers various common items in full sequence
+   form, this new mod offers the codes without being embedded in the full sequence pattern. This may
+   be useful to some for constructing custom combinations via named constants instead of raw numeric
+   literals. The prefix and postfix parts of the sequence pattern are given also. Note that it is
+   not possible to use these names constants with `seq` since the Rust macro construction would take
+   the literal name of the constant, rather than what the constant points to.
+ * Added a `demo` example, which outputs some sample text with various forms of formatting applied,
+   to demonstrate the possibilities and the capabilities of your terminal.
+
 # 0.5.0 (September 15th, 2019)
 
  * Reworked the format-supported helpers on top of the `atty` crate, thus bringing better cross
