@@ -22,9 +22,9 @@ pub mod effects {
 
     /// Alias for reset-all
     pub const NORMAL:    &str = super::RESET;
-    /// Bold
+    /// Bold (increase intensity)
     pub const BOLD:      &str = seq!(1);
-    /// Dim (aka faint)
+    /// Dim (aka faint; decrease intensity)
     pub const DIM:       &str = seq!(2);
     /// Italic
     pub const ITALIC:    &str = seq!(3);
@@ -33,7 +33,7 @@ pub mod effects {
     /// Blink
     pub const BLINK:     &str = seq!(5);
     /* `6` is unused? */
-    /// Inverse
+    /// Inverse (swap foreground/background colours)
     pub const INVERSE:   &str = seq!(7);
     /// Invisible (hidden)
     pub const INVISIBLE: &str = seq!(8);
