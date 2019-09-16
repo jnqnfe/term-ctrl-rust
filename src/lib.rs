@@ -229,6 +229,7 @@ extern crate atty;
 #[cfg(windows)]
 extern crate winapi;
 
+pub mod codes;
 mod macros;
 pub mod predefined;
 pub mod support;
