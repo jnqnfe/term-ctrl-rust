@@ -78,6 +78,11 @@ pub mod effects {
 pub mod colours {
     use super::seq;
 
+    /// Alias for resetting foreground colour
+    pub const RESET_FG: &str = fg::RESET;
+    /// Alias for resetting background colour
+    pub const RESET_BG: &str = bg::RESET;
+
     /// Text (foreground) colour
     pub mod fg {
         use super::seq;
