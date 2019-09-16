@@ -151,6 +151,9 @@
 //! codes for removing specific effects, with `22` removing both bold and dim effects together,
 //! otherwise the last digit corresponds to the effect removed (e.g. `3` and `23` relate to italic).
 //!
+//! Codes `10-19` are used for font selection. Code `10` selects the primary (default) font. Codes
+//! `11`-`19` select alternate fonts 1-9.
+//!
 //! ### Basic colours
 //!
 //! The basic colour palettes consist of a simple set of eight colours for each of foreground and

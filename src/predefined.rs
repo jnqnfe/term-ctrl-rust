@@ -41,7 +41,8 @@ pub mod effects {
     /// Strike-through
     pub const STRIKE:      &str = seq!(9);
 
-    /* `10`-`20` are unused? */
+    /* `10`-`19` are used for font selection, covered by the font mod */
+    /* ``20` is unused? */
 
     /// Double-underline
     pub const DBL_UNDERLINE: &str = seq!(21);
@@ -76,6 +77,32 @@ pub mod effects {
         /// Alias for `BOLD_DIM` (reset intensity)
         pub const INTENSITY:  &str = BOLD_DIM;
     }
+}
+
+/// Font selection
+pub mod fonts {
+    use super::seq;
+
+    /// Select the primary (default) font
+    pub const DEFAULT: &str = seq!(10);
+    /// Select alternate font #1
+    pub const ALT1: &str = seq!(11);
+    /// Select alternate font #2
+    pub const ALT2: &str = seq!(12);
+    /// Select alternate font #3
+    pub const ALT3: &str = seq!(13);
+    /// Select alternate font #4
+    pub const ALT4: &str = seq!(14);
+    /// Select alternate font #5
+    pub const ALT5: &str = seq!(15);
+    /// Select alternate font #6
+    pub const ALT6: &str = seq!(16);
+    /// Select alternate font #7
+    pub const ALT7: &str = seq!(17);
+    /// Select alternate font #8
+    pub const ALT8: &str = seq!(18);
+    /// Select alternate font #9
+    pub const ALT9: &str = seq!(19);
 }
 
 /// Text foreground and background colours
