@@ -95,8 +95,8 @@
 //! ## Macro construction
 //!
 //! As just mentioned, a macro (called [`seq`]) is provided to assist with constructing sequences.
-//! All you have to do is provide it with a list of numbers and it will construct a string of the
-//! above pattern that contains them. An example:
+//! All you have to do is provide it with a list of decimal numbers and it will construct a string
+//! of the above pattern that contains them. An example:
 //!
 //! ```rust
 //! use term_ctrl::seq;
