@@ -3,7 +3,7 @@
  * Reworked the format-supported helpers on top of the `atty` crate, thus bringing better cross
    platform support.
  * Added a Windows `enable_ansi_support` function, taken from `ansi_term`
- * Renamed the `term_seq` macro to more simply `seq`. Shorter is better
+ * Renamed the `term_seq` macro to more simply `seq`
  * Reorganised a bit
  * Re-wrote the documentation
  * Various other odd little tweaks really not worth documenting
