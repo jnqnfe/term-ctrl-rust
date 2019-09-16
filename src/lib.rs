@@ -200,9 +200,21 @@
 //! starts with `48`, it is providing an RGB colour (the `2`), and is then followed with RGB values
 //! of `180` for red, `15` for green and `70` for blue.
 //!
+//! # Resources
+//!
+//! A collection of useful or informative related resources:
+//!
+//!  - [Wikipedia: ANSI_escape_code][wikipedia_ANSI_escape_code_SGR] (Specifically the CSI-SGR stuff)
+//!  - [Wikipedia: Xterm][wikipedia_Xterm]
+//!  - [Xterm control sequence documentation][xterm_ctlseqs]
+//!  - [256-color chart][Xterm_256color_chart.svg]
+//!
 //! [support mod]: support/index.html
 //! [`seq`]: macro.seq.html
 //! [Xterm_256color_chart.svg]: https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+//! [wikipedia_ANSI_escape_code_SGR]: https://en.wikipedia.org/wiki/ANSI_escape_code#SGR
+//! [wikipedia_Xterm]: https://en.wikipedia.org/wiki/Xterm
+//! [xterm_ctlseqs]: https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
 
 #![no_std]
 
