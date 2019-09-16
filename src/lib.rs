@@ -117,7 +117,7 @@
 //! use in a sequence (they do not generate the full sequence, just a multi-code set of numbers to
 //! use in a sequence).
 //!
-//! ## Number chart
+//! ## Number code chart
 //!
 //! The following is a guide to the available number codes and what they correspond to. In most
 //! cases a single number code corresponds to a single effect, however there are also those that
