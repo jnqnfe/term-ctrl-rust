@@ -132,10 +132,10 @@
 //!         <tr><th>Code</th><th>Effect</th><th>Code</th><th>Effect</th></tr>
 //!     </thead>
 //!     <tbody>
-//!         <tr><td>0</td><td>Normal (reset)</td><td>20</td><td><em>unused?</em></td></tr>
+//!         <tr><td>0</td><td>Normal (reset)</td><td>20</td><td><a href="https://en.wikipedia.org/wiki/Fraktur_(script)">Fraktur</a></td></tr>
 //!         <tr><td>1</td><td>Bold (increase intensity)</td><td>21</td><td>Double-underline</td></tr>
 //!         <tr><td>2</td><td>Dim (faint, or decrease intensity)</td><td>22</td><td>Remove bold and dim</td></tr>
-//!         <tr><td>3</td><td>Italic</td><td>23</td><td>Remove italic</td></tr>
+//!         <tr><td>3</td><td>Italic</td><td>23</td><td>Remove italic and Fraktur</td></tr>
 //!         <tr><td>4</td><td>Underlined</td><td>24</td><td>Remove underline (and double-underline)</td></tr>
 //!         <tr><td>5</td><td>Blink</td><td>25</td><td>Remove blink (aka “steady”)</td></tr>
 //!         <tr><td>6</td><td>Rapid-blink</td><td>26</td><td><em>unused?</em></td></tr>

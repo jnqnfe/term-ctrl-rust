@@ -42,8 +42,9 @@ pub mod effects {
     pub const STRIKE:      &str = seq!(9);
 
     /* `10`-`19` are used for font selection, covered by the font mod */
-    /* ``20` is unused? */
 
+    /// Fraktur
+    pub const FRAKTUR:       &str = seq!(20);
     /// Double-underline
     pub const DBL_UNDERLINE: &str = seq!(21);
 
