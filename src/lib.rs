@@ -35,7 +35,7 @@
 //! text to be formatted. For instance:
 //!
 //! ```rust
-//! use term_ctrl::predefined::{RESET, color1::RED};
+//! use term_ctrl::predefined::{RESET, colours::fg::RED};
 //! println!("{}Error:{} You made an error!", RED, RESET);
 //! ```
 //!
@@ -46,7 +46,7 @@
 //! a filter to control use:
 //!
 //! ```rust
-//! use term_ctrl::predefined::{RESET, color1::RED};
+//! use term_ctrl::predefined::{RESET, colours::fg::RED};
 //! let format = term_ctrl::support::fmt_supported_stdout();
 //! let filter = |seq| { match format { true => seq, false => "" } };
 //! println!("{}Error:{} You made an error!", filter(RED), filter(RESET));

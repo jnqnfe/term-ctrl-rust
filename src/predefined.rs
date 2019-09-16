@@ -14,8 +14,10 @@ pub const RESET: &str = seq!(0);
 
 /// Effects
 pub mod effects {
-    use super::*;
+    use super::seq;
 
+    /// Alias for reset-all
+    pub const NORMAL:    &str = super::RESET;
     pub const BOLD:      &str = seq!(1);
     pub const DIM:       &str = seq!(2);
     pub const ITALIC:    &str = seq!(3);
@@ -27,72 +29,82 @@ pub mod effects {
     pub const STRIKE:    &str = seq!(9);
 }
 
-/// Text colour, set #1
-pub mod color1 {
-    use super::*;
+/// Text foreground and background colours
+pub mod colours {
+    use super::seq;
 
-    pub const BLACK:   &str = seq!(30);
-    pub const RED:     &str = seq!(31);
-    pub const GREEN:   &str = seq!(32);
-    pub const YELLOW:  &str = seq!(33);
-    pub const BLUE:    &str = seq!(34);
-    pub const MAGENTA: &str = seq!(35);
-    pub const CYAN:    &str = seq!(36);
-    pub const WHITE:   &str = seq!(37);
+    /// Text (foreground) colour
+    pub mod fg {
+        use super::seq;
+
+        pub const BLACK:   &str = seq!(30);
+        pub const RED:     &str = seq!(31);
+        pub const GREEN:   &str = seq!(32);
+        pub const YELLOW:  &str = seq!(33);
+        pub const BLUE:    &str = seq!(34);
+        pub const MAGENTA: &str = seq!(35);
+        pub const CYAN:    &str = seq!(36);
+        pub const WHITE:   &str = seq!(37);
+
+        /// Bright variants
+        pub mod bright {
+            use super::seq;
+
+            pub const BLACK:   &str = seq!(90);
+            pub const RED:     &str = seq!(91);
+            pub const GREEN:   &str = seq!(92);
+            pub const YELLOW:  &str = seq!(93);
+            pub const BLUE:    &str = seq!(94);
+            pub const MAGENTA: &str = seq!(95);
+            pub const CYAN:    &str = seq!(96);
+            pub const WHITE:   &str = seq!(97);
+        }
+    }
+
+    /// Text (background) highlighting colour
+    pub mod bg {
+        use super::seq;
+
+        pub const BLACK:   &str = seq!(40);
+        pub const RED:     &str = seq!(41);
+        pub const GREEN:   &str = seq!(42);
+        pub const YELLOW:  &str = seq!(43);
+        pub const BLUE:    &str = seq!(44);
+        pub const MAGENTA: &str = seq!(45);
+        pub const CYAN:    &str = seq!(46);
+        pub const WHITE:   &str = seq!(47);
+
+        /// Bright variants
+        pub mod bright {
+            use super::seq;
+
+            pub const BLACK:   &str = seq!(100);
+            pub const RED:     &str = seq!(101);
+            pub const GREEN:   &str = seq!(102);
+            pub const YELLOW:  &str = seq!(103);
+            pub const BLUE:    &str = seq!(104);
+            pub const MAGENTA: &str = seq!(105);
+            pub const CYAN:    &str = seq!(106);
+            pub const WHITE:   &str = seq!(107);
+        }
+    }
 }
 
-/// Text colour, set #2
-pub mod color2 {
-    use super::*;
+/// Combinations
+pub mod combinations {
+    use super::seq;
 
-    pub const BLACK:   &str = seq!(90);
-    pub const RED:     &str = seq!(91);
-    pub const GREEN:   &str = seq!(92);
-    pub const YELLOW:  &str = seq!(93);
-    pub const BLUE:    &str = seq!(94);
-    pub const MAGENTA: &str = seq!(95);
-    pub const CYAN:    &str = seq!(96);
-    pub const WHITE:   &str = seq!(97);
-}
+    /// Combined bold + text (foreground) colour
+    pub mod fg_bold {
+        use super::seq;
 
-/// Combined bold + text colour set #1
-pub mod color1_bold {
-    use super::*;
-
-    pub const BLACK:   &str = seq!(30,1);
-    pub const RED:     &str = seq!(31,1);
-    pub const GREEN:   &str = seq!(32,1);
-    pub const YELLOW:  &str = seq!(33,1);
-    pub const BLUE:    &str = seq!(34,1);
-    pub const MAGENTA: &str = seq!(35,1);
-    pub const CYAN:    &str = seq!(36,1);
-    pub const WHITE:   &str = seq!(37,1);
-}
-
-/// Background colour highlighting, set #1
-pub mod highlight1 {
-    use super::*;
-
-    pub const BLACK:   &str = seq!(40);
-    pub const RED:     &str = seq!(41);
-    pub const GREEN:   &str = seq!(42);
-    pub const YELLOW:  &str = seq!(43);
-    pub const BLUE:    &str = seq!(44);
-    pub const MAGENTA: &str = seq!(45);
-    pub const CYAN:    &str = seq!(46);
-    pub const WHITE:   &str = seq!(47);
-}
-
-/// Background colour highlighting, set #2
-pub mod highlight2 {
-    use super::*;
-
-    pub const BLACK:   &str = seq!(100);
-    pub const RED:     &str = seq!(101);
-    pub const GREEN:   &str = seq!(102);
-    pub const YELLOW:  &str = seq!(103);
-    pub const BLUE:    &str = seq!(104);
-    pub const MAGENTA: &str = seq!(105);
-    pub const CYAN:    &str = seq!(106);
-    pub const WHITE:   &str = seq!(107);
+        pub const BLACK:   &str = seq!(30,1);
+        pub const RED:     &str = seq!(31,1);
+        pub const GREEN:   &str = seq!(32,1);
+        pub const YELLOW:  &str = seq!(33,1);
+        pub const BLUE:    &str = seq!(34,1);
+        pub const MAGENTA: &str = seq!(35,1);
+        pub const CYAN:    &str = seq!(36,1);
+        pub const WHITE:   &str = seq!(37,1);
+    }
 }

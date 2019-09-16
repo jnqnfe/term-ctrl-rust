@@ -25,8 +25,8 @@ fn term_seq() {
 fn predefines() {
     assert_eq!(predefined::RESET, "\u{1B}[0m");
     assert_eq!(predefined::effects::BOLD, "\u{1B}[1m");
-    assert_eq!(predefined::color1::GREEN, "\u{1B}[32m");
-    assert_eq!(predefined::color1_bold::GREEN, "\u{1B}[32;1m");
+    assert_eq!(predefined::colours::fg::GREEN, "\u{1B}[32m");
+    assert_eq!(predefined::combinations::fg_bold::GREEN, "\u{1B}[32;1m");
 }
 
 #[cfg(not(windows))]
