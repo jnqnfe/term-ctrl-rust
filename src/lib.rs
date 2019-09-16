@@ -183,6 +183,8 @@
 //! The “default” codes `39` and `49` are used to reset foreground and background-highlight colours
 //! respectively to defaults, and apply to bright and extended colouring also.
 //!
+//! Note that the “bright” codes are not actually a part of the official ANSI standard, apparently.
+//!
 //! ### Extended range colours
 //!
 //! Wider choice of colours than above is made available as *extended* colours through use of a
