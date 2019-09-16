@@ -151,9 +151,17 @@
 //!  - `_5`: Magenta
 //!  - `_6`: Cyan
 //!  - `_7`: White
-//!  - `_8`: Used as part of an *extended* colour sequence, as discussed shortly
+//!  - `_8`: *Extended* (Used as part of an *extended* colour sequence, as discussed shortly)
+//!  - `_9`: *Default* (reset)
+//!
+//! Note that `_8` and `_9` are only available as `38`, `39` and `48`, `49` respectively.
 //!
 //! So for instance `32` means green text.
+//!
+//! Colours can be set to specific colours, but can also be reset to defaults using `39` for a
+//! foreground (text) reset, and `49` for a background-highlight reset. (These apply to not just the
+//! basic colour ranges within the same value range (`3_` and `4_`) but to bright and extended
+//! colouring also.
 //!
 //! ### Extended range colours
 //!
