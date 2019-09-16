@@ -148,32 +148,32 @@
 //!
 //! ### Basic colours
 //!
-//!  - Text (foreground): `30`-`37`
-//!  - Background-highlight: `40`-`47`
-//!  - Bright text (foreground): `90`-`97`
-//!  - Bright background-highlight: `100`-`107`
+//! The basic colour palettes consist of a simple set of eight colours for each of foreground and
+//! background-highlight uses. There are also “bright” variants.
 //!
-//! The last digit of the number corresponds to a colour as follows:
+//! <table>
+//!     <thead>
+//!         <tr><th>Colour</th><th>Foreground</th><th>Background</th><th>Bright foreground</th><th>Bright background</th></tr>
+//!     </thead>
+//!     <tbody>
+//!         <tr><td>Black</td><td>30</td><td>40</td><td>90</td><td>100</td></tr>
+//!         <tr><td>Red</td><td>31</td><td>41</td><td>91</td><td>101</td></tr>
+//!         <tr><td>Green</td><td>32</td><td>42</td><td>92</td><td>102</td></tr>
+//!         <tr><td>Yellow</td><td>33</td><td>43</td><td>93</td><td>103</td></tr>
+//!         <tr><td>Blue</td><td>34</td><td>44</td><td>94</td><td>104</td></tr>
+//!         <tr><td>Magenta</td><td>35</td><td>45</td><td>95</td><td>105</td></tr>
+//!         <tr><td>Cyan</td><td>36</td><td>46</td><td>96</td><td>106</td></tr>
+//!         <tr><td>White</td><td>37</td><td>47</td><td>97</td><td>107</td></tr>
+//!         <tr><td><em>Extended</em></td><td>38</td><td>48</td><td><em>n/a</em></td><td><em>n/a</em></td></tr>
+//!         <tr><td><em>Default</em> (reset)</td><td>39</td><td>49</td><td><em>n/a</em></td><td><em>n/a</em></td></tr>
+//!     </tbody>
+//! </table>
 //!
-//!  - `_0`: Black
-//!  - `_1`: Red
-//!  - `_2`: Green
-//!  - `_3`: Yellow
-//!  - `_4`: Blue
-//!  - `_5`: Magenta
-//!  - `_6`: Cyan
-//!  - `_7`: White
-//!  - `_8`: *Extended* (Used as part of an *extended* colour sequence, as discussed shortly)
-//!  - `_9`: *Default* (reset)
+//! The “extended” codes `38` and `48` are used to start multi-code “extended” colour palette
+//! selections, as discussed shortly.
 //!
-//! Note that `_8` and `_9` are only available as `38`, `39` and `48`, `49` respectively.
-//!
-//! So for instance `32` means green text.
-//!
-//! Colours can be set to specific colours, but can also be reset to defaults using `39` for a
-//! foreground (text) reset, and `49` for a background-highlight reset. (These apply to not just the
-//! basic colour ranges within the same value range (`3_` and `4_`) but to bright and extended
-//! colouring also.
+//! The “default” codes `39` and `49` are used to reset foreground and background-highlight colours
+//! respectively to defaults, and apply to bright and extended colouring also.
 //!
 //! ### Extended range colours
 //!
