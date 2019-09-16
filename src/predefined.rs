@@ -71,6 +71,9 @@ pub mod effects {
         pub const INVISIBLE: &str = seq!(28);
         /// Removes strike-through
         pub const STRIKE:    &str = seq!(29);
+
+        /// Alias for `BOLD_DIM` (reset intensity)
+        pub const INTENSITY:  &str = BOLD_DIM;
     }
 }
 
