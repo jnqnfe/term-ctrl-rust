@@ -113,28 +113,32 @@
 //!
 //! ## Number chart
 //!
-//! The available numbers consist of the following (divided up into related groups):
+//! The following is a guide to the available number codes and what they correspond to. In most
+//! cases a single number code corresponds to a single effect, however there are also those that
+//! require a sequence of multiple numbers (with the normal semi-colon separator).
 //!
-//!  - Reset: `0`
-//!  - Effects: `1`-`9`
-//!  - Basic colours:
-//!     - `30`-`37` for text colour (set #1)
-//!     - `40`-`47` for background-highlight colour (set #1)
-//!     - `90`-`97` for text colour (set #2)
-//!     - `100`-`107` for background-highlight colour (set #2)
+//! Single number code overview:
+//!
+//!  - Effects: `0`-`9`
+//!  - Colours:
+//!     - Text (foreground): `30`-`37`
+//!     - Background: `40`-`47`
+//!     - Bright text (foreground): `90`-`97`
+//!     - Bright background: `100`-`107`
 //!
 //! It is also possible to express *extended* colours using a multi-number sequence, as explained
 //! shortly.
 //!
 //! The effects, specifically, are:
 //!
+//!  - `0`: Normal (reset)
 //!  - `1`: Bold
-//!  - `2`: Dim
+//!  - `2`: Dim (faint)
 //!  - `3`: Italic
-//!  - `4`: Underline
+//!  - `4`: Underlined
 //!  - `5`: Blink
 //!  - `6`: *<unused?>*
-//!  - `7`: “Reverse”
+//!  - `7`: “Inverse”
 //!  - `8`: Invisible (hidden)
 //!  - `9`: Strike-through
 //!
@@ -151,13 +155,7 @@
 //!  - `_7`: White
 //!  - `_8`: Used as part of an *extended* colour sequence, as discussed shortly
 //!
-//! So for instance `32` means green text (set #1).
-//!
-//! Note that there are two different sets for each of these basic text and background colour
-//! choices. Some terminals offer a second alternate palette of colour mappings, which could map to
-//! identical colours as the first, or could offer slight variations of the precise colours used.
-//! Note that the actual colours output may possibly be adjusted by user themes, or through user
-//! preferences, should the terminal program offer such user configuration.
+//! So for instance `32` means green text.
 //!
 //! With respect to *extended* colours, these are expressed using multiple numbers, starting with
 //! `_8` from one of the basic colour sets. There are two choices available here:
