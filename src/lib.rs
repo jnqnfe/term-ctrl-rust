@@ -88,9 +88,9 @@
 //!
 //! Before we continue, understand that the effects specified are applied in sequence and are
 //! applied cumulatively both with respect to previous effects in the same sequence and also to any
-//! existing effects still in effect from a previous sequence. There are no numbers assigned for
-//! turning off individual effects, just one “reset” code (`0`) which removes all effects currently
-//! applied.
+//! existing effects still in effect from a previous sequence. There are specific codes for removing
+//! specific effects or resetting foreground or background-highlight colours. There is also the
+//! catch-all code `0` for resetting everything to normal.
 //!
 //! ## Macro construction
 //!
@@ -133,6 +133,16 @@
 //!  - `7`: “Inverse”
 //!  - `8`: Invisible (hidden)
 //!  - `9`: Strike-through
+//!  - `10-20`: *<unused?>*
+//!  - `21`: Double-underline
+//!  - `22`: Remove bold and faint effects
+//!  - `23`: Remove italic effect
+//!  - `24`: Remove underline effect
+//!  - `25`: Remove blink effect (aka “steady”)
+//!  - `26`: *<unused?>*
+//!  - `27`: Remove inverse effect (aka “positive”)
+//!  - `28`: Remove invisible effect (aka “visible”)
+//!  - `29`: Remove strike-through effect
 //!
 //! ### Basic colours
 //!

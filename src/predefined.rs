@@ -10,6 +10,7 @@
 
 use crate::seq;
 
+/// Resets everything to defaults (removes all effects and colours specified)
 pub const RESET: &str = seq!(0);
 
 /// Effects
@@ -18,15 +19,56 @@ pub mod effects {
 
     /// Alias for reset-all
     pub const NORMAL:    &str = super::RESET;
+    /// Bold
     pub const BOLD:      &str = seq!(1);
+    /// Dim (aka faint)
     pub const DIM:       &str = seq!(2);
+    /// Italic
     pub const ITALIC:    &str = seq!(3);
+    /// Underline
     pub const UNDERLINE: &str = seq!(4);
+    /// Blink
     pub const BLINK:     &str = seq!(5);
+    /* `6` is unused? */
+    /// Inverse
     pub const INVERSE:   &str = seq!(7);
+    /// Invisible (hidden)
     pub const INVISIBLE: &str = seq!(8);
     /// Strike-through
     pub const STRIKE:    &str = seq!(9);
+
+    /* `10`-`20` are unused? */
+
+    /// Double-underline
+    pub const DBL_UNDERLINE: &str = seq!(21);
+
+    /// Alias for removing blink
+    pub const STEADY:    &str = remove::BLINK;
+    /// Alias for removing inverse
+    pub const POSITIVE:  &str = remove::INVISIBLE;
+    /// Alias for v invisible
+    pub const VISIBLE:   &str = remove::INVISIBLE;
+
+    /// Sequences that remove specific effects
+    pub mod remove {
+        use super::seq;
+
+        /// Removes bold and/or dim
+        pub const BOLD_DIM:  &str = seq!(22);
+        /// Removes italic
+        pub const ITALIC:    &str = seq!(23);
+        /// Removes underline
+        pub const UNDERLINE: &str = seq!(24);
+        /// Removes blink
+        pub const BLINK:     &str = seq!(25);
+        /* `26` is unused? */
+        /// Removes inverse
+        pub const INVERSE:   &str = seq!(27);
+        /// Removes invisible
+        pub const INVISIBLE: &str = seq!(28);
+        /// Removes strike-through
+        pub const STRIKE:    &str = seq!(29);
+    }
 }
 
 /// Text foreground and background colours
@@ -46,6 +88,7 @@ pub mod colours {
         pub const CYAN:    &str = seq!(36);
         pub const WHITE:   &str = seq!(37);
 
+        /// Resets foreground colour to default
         pub const RESET:   &str = seq!(39);
 
         /// Bright variants
@@ -76,6 +119,7 @@ pub mod colours {
         pub const CYAN:    &str = seq!(46);
         pub const WHITE:   &str = seq!(47);
 
+        /// Resets background-highlight colour to default
         pub const RESET:   &str = seq!(49);
 
         /// Bright variants
