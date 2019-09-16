@@ -21,7 +21,7 @@ pub mod effects {
     pub const ITALIC:    &str = seq!(3);
     pub const UNDERLINE: &str = seq!(4);
     pub const BLINK:     &str = seq!(5);
-    pub const REVERSE:   &str = seq!(7);
+    pub const INVERSE:   &str = seq!(7);
     pub const INVISIBLE: &str = seq!(8);
     /// Strike-through
     pub const STRIKE:    &str = seq!(9);
