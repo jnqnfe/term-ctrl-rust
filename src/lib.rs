@@ -83,7 +83,7 @@
 //! Every control sequence fits this template, and it is the set of numbers included in it which
 //! determine the precise formatting nature of the request. As a quick example, the sequence of
 //! `"\u{1B}[31;1m"` specifies two numbers, `31` which corresponds to red text, and `1` which
-//! corresponds to bold text (the number to effect mapping is discussed shortly).
+//! corresponds to bold text (the set of available number codes are discussed shortly).
 //!
 //! Typically each of the individual numbers given corresponds to a particular effect, however as we
 //! will see shortly there are a couple of exceptions where multiple numbers are used.
