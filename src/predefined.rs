@@ -46,6 +46,8 @@ pub mod colours {
         pub const CYAN:    &str = seq!(36);
         pub const WHITE:   &str = seq!(37);
 
+        pub const RESET:   &str = seq!(39);
+
         /// Bright variants
         pub mod bright {
             use super::seq;
@@ -73,6 +75,8 @@ pub mod colours {
         pub const MAGENTA: &str = seq!(45);
         pub const CYAN:    &str = seq!(46);
         pub const WHITE:   &str = seq!(47);
+
+        pub const RESET:   &str = seq!(49);
 
         /// Bright variants
         pub mod bright {
