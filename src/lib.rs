@@ -137,9 +137,9 @@
 //! ### Basic colours
 //!
 //!  - Text (foreground): `30`-`37`
-//!  - Background: `40`-`47`
+//!  - Background-highlight: `40`-`47`
 //!  - Bright text (foreground): `90`-`97`
-//!  - Bright background: `100`-`107`
+//!  - Bright background-highlight: `100`-`107`
 //!
 //! The last digit of the number corresponds to a colour as follows:
 //!
@@ -161,11 +161,11 @@
 //! sequence of codes (using the normal semi-colon separator).
 //!
 //! There are two ranges available, an 8-bit (256 colour) range, and a 24-bit RGB range. Both begin
-//! with either `38` to choose text (foreground colouring) or `48` for background colouring. This is
-//! followed by `5` for specifying 256-colour or `2` for specifying RGB colour. With 256-colour a
-//! final third number with a value in the range of 0-255 selects the specific colour. With RGB,
-//! three numbers must be given, each corresponding to red, green and blue respectively, and each
-//! also being of a value inthe range 0-255.
+//! with either `38` to choose text (foreground colouring) or `48` for background-highlight
+//! colouring. This is followed by `5` for specifying 256-colour or `2` for specifying RGB colour.
+//! With 256-colour a final third number with a value in the range of 0-255 selects the specific
+//! colour. With RGB, three numbers must be given, each corresponding to red, green and blue
+//! respectively, and each also being of a value in the range 0-255.
 //!
 //! As an example, `seq!(38,5,238)` changes the colour of text (not background) since it starts with
 //! `38`, it is providing a 256-colour palette selection (the `5`), and is specifically selecting
