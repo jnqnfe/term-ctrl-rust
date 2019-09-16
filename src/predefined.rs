@@ -10,6 +10,9 @@
 
 use crate::seq;
 
+// Alias for the non-British-English speakers
+pub use self::colours as colors;
+
 /// Resets everything to defaults (removes all effects and colours specified)
 pub const RESET: &str = seq!(0);
 
