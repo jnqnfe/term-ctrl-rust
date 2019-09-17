@@ -11,11 +11,16 @@
 
 extern crate term_ctrl;
 
-use term_ctrl::predefined::*;
+use term_ctrl::{seq, rgb_fg, rgb_bg, predefined::*};
 use term_ctrl::predefined::colours::{fg, bg, RESET_BG};
 
 fn main() {
     const SAMPLE_TEXT: &str = "Hello world!";
+
+    const FGB: &str = seq!(rgb_fg!(255,255,255));
+    const BGB: &str = seq!(rgb_bg!(255,255,255));
+    const FGW: &str = seq!(rgb_fg!(0,0,0));
+    const BGW: &str = seq!(rgb_bg!(0,0,0));
 
     println!("Demo text:");
     println!("                    {}", SAMPLE_TEXT);
@@ -34,44 +39,44 @@ fn main() {
     println!("  Double-underline: {}{}{}", effects::DBL_UNDERLINE, SAMPLE_TEXT, RESET);
 
     println!("Basic foreground colours:");
-    println!("  Black:            {}{}    {}{}{}    {}{}{}", fg::BLACK,   SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Red:              {}{}    {}{}{}    {}{}{}", fg::RED,     SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Green:            {}{}    {}{}{}    {}{}{}", fg::GREEN,   SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Yellow:           {}{}    {}{}{}    {}{}{}", fg::YELLOW,  SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Blue:             {}{}    {}{}{}    {}{}{}", fg::BLUE,    SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Magenta:          {}{}    {}{}{}    {}{}{}", fg::MAGENTA, SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Cyan:             {}{}    {}{}{}    {}{}{}", fg::CYAN,    SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  White:            {}{}    {}{}{}    {}{}{}", fg::WHITE,   SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
+    println!("  Black:            {}{}    {}{}{}    {}{}{}", fg::BLACK,   SAMPLE_TEXT, BGW, SAMPLE_TEXT, RESET_BG, BGB, SAMPLE_TEXT, RESET);
+    println!("  Red:              {}{}    {}{}{}    {}{}{}", fg::RED,     SAMPLE_TEXT, BGW, SAMPLE_TEXT, RESET_BG, BGB, SAMPLE_TEXT, RESET);
+    println!("  Green:            {}{}    {}{}{}    {}{}{}", fg::GREEN,   SAMPLE_TEXT, BGW, SAMPLE_TEXT, RESET_BG, BGB, SAMPLE_TEXT, RESET);
+    println!("  Yellow:           {}{}    {}{}{}    {}{}{}", fg::YELLOW,  SAMPLE_TEXT, BGW, SAMPLE_TEXT, RESET_BG, BGB, SAMPLE_TEXT, RESET);
+    println!("  Blue:             {}{}    {}{}{}    {}{}{}", fg::BLUE,    SAMPLE_TEXT, BGW, SAMPLE_TEXT, RESET_BG, BGB, SAMPLE_TEXT, RESET);
+    println!("  Magenta:          {}{}    {}{}{}    {}{}{}", fg::MAGENTA, SAMPLE_TEXT, BGW, SAMPLE_TEXT, RESET_BG, BGB, SAMPLE_TEXT, RESET);
+    println!("  Cyan:             {}{}    {}{}{}    {}{}{}", fg::CYAN,    SAMPLE_TEXT, BGW, SAMPLE_TEXT, RESET_BG, BGB, SAMPLE_TEXT, RESET);
+    println!("  White:            {}{}    {}{}{}    {}{}{}", fg::WHITE,   SAMPLE_TEXT, BGW, SAMPLE_TEXT, RESET_BG, BGB, SAMPLE_TEXT, RESET);
 
     println!("Basic foreground colours - bright:");
-    println!("  Black:            {}{}    {}{}{}    {}{}{}", fg::bright::BLACK,   SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Red:              {}{}    {}{}{}    {}{}{}", fg::bright::RED,     SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Green:            {}{}    {}{}{}    {}{}{}", fg::bright::GREEN,   SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Yellow:           {}{}    {}{}{}    {}{}{}", fg::bright::YELLOW,  SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Blue:             {}{}    {}{}{}    {}{}{}", fg::bright::BLUE,    SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Magenta:          {}{}    {}{}{}    {}{}{}", fg::bright::MAGENTA, SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Cyan:             {}{}    {}{}{}    {}{}{}", fg::bright::CYAN,    SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  White:            {}{}    {}{}{}    {}{}{}", fg::bright::WHITE,   SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
+    println!("  Black:            {}{}    {}{}{}    {}{}{}", fg::bright::BLACK,   SAMPLE_TEXT, BGW, SAMPLE_TEXT, RESET_BG, BGB, SAMPLE_TEXT, RESET);
+    println!("  Red:              {}{}    {}{}{}    {}{}{}", fg::bright::RED,     SAMPLE_TEXT, BGW, SAMPLE_TEXT, RESET_BG, BGB, SAMPLE_TEXT, RESET);
+    println!("  Green:            {}{}    {}{}{}    {}{}{}", fg::bright::GREEN,   SAMPLE_TEXT, BGW, SAMPLE_TEXT, RESET_BG, BGB, SAMPLE_TEXT, RESET);
+    println!("  Yellow:           {}{}    {}{}{}    {}{}{}", fg::bright::YELLOW,  SAMPLE_TEXT, BGW, SAMPLE_TEXT, RESET_BG, BGB, SAMPLE_TEXT, RESET);
+    println!("  Blue:             {}{}    {}{}{}    {}{}{}", fg::bright::BLUE,    SAMPLE_TEXT, BGW, SAMPLE_TEXT, RESET_BG, BGB, SAMPLE_TEXT, RESET);
+    println!("  Magenta:          {}{}    {}{}{}    {}{}{}", fg::bright::MAGENTA, SAMPLE_TEXT, BGW, SAMPLE_TEXT, RESET_BG, BGB, SAMPLE_TEXT, RESET);
+    println!("  Cyan:             {}{}    {}{}{}    {}{}{}", fg::bright::CYAN,    SAMPLE_TEXT, BGW, SAMPLE_TEXT, RESET_BG, BGB, SAMPLE_TEXT, RESET);
+    println!("  White:            {}{}    {}{}{}    {}{}{}", fg::bright::WHITE,   SAMPLE_TEXT, BGW, SAMPLE_TEXT, RESET_BG, BGB, SAMPLE_TEXT, RESET);
 
     println!("Basic background colours:");
-    println!("  Black:            {}{}    {}{}    {}{}{}", bg::BLACK,   SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Red:              {}{}    {}{}    {}{}{}", bg::RED,     SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Green:            {}{}    {}{}    {}{}{}", bg::GREEN,   SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Yellow:           {}{}    {}{}    {}{}{}", bg::YELLOW,  SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Blue:             {}{}    {}{}    {}{}{}", bg::BLUE,    SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Magenta:          {}{}    {}{}    {}{}{}", bg::MAGENTA, SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Cyan:             {}{}    {}{}    {}{}{}", bg::CYAN,    SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  White:            {}{}    {}{}    {}{}{}", bg::WHITE,   SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
+    println!("  Black:            {}{}    {}{}    {}{}{}", bg::BLACK,   SAMPLE_TEXT, FGW, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
+    println!("  Red:              {}{}    {}{}    {}{}{}", bg::RED,     SAMPLE_TEXT, FGW, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
+    println!("  Green:            {}{}    {}{}    {}{}{}", bg::GREEN,   SAMPLE_TEXT, FGW, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
+    println!("  Yellow:           {}{}    {}{}    {}{}{}", bg::YELLOW,  SAMPLE_TEXT, FGW, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
+    println!("  Blue:             {}{}    {}{}    {}{}{}", bg::BLUE,    SAMPLE_TEXT, FGW, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
+    println!("  Magenta:          {}{}    {}{}    {}{}{}", bg::MAGENTA, SAMPLE_TEXT, FGW, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
+    println!("  Cyan:             {}{}    {}{}    {}{}{}", bg::CYAN,    SAMPLE_TEXT, FGW, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
+    println!("  White:            {}{}    {}{}    {}{}{}", bg::WHITE,   SAMPLE_TEXT, FGW, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
 
     println!("Basic background colours - bright:");
-    println!("  Black:            {}{}    {}{}    {}{}{}", bg::bright::BLACK,   SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Red:              {}{}    {}{}    {}{}{}", bg::bright::RED,     SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Green:            {}{}    {}{}    {}{}{}", bg::bright::GREEN,   SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Yellow:           {}{}    {}{}    {}{}{}", bg::bright::YELLOW,  SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Blue:             {}{}    {}{}    {}{}{}", bg::bright::BLUE,    SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Magenta:          {}{}    {}{}    {}{}{}", bg::bright::MAGENTA, SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  Cyan:             {}{}    {}{}    {}{}{}", bg::bright::CYAN,    SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
-    println!("  White:            {}{}    {}{}    {}{}{}", bg::bright::WHITE,   SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
+    println!("  Black:            {}{}    {}{}    {}{}{}", bg::bright::BLACK,   SAMPLE_TEXT, FGW, SAMPLE_TEXT, FGB, SAMPLE_TEXT, RESET);
+    println!("  Red:              {}{}    {}{}    {}{}{}", bg::bright::RED,     SAMPLE_TEXT, FGW, SAMPLE_TEXT, FGB, SAMPLE_TEXT, RESET);
+    println!("  Green:            {}{}    {}{}    {}{}{}", bg::bright::GREEN,   SAMPLE_TEXT, FGW, SAMPLE_TEXT, FGB, SAMPLE_TEXT, RESET);
+    println!("  Yellow:           {}{}    {}{}    {}{}{}", bg::bright::YELLOW,  SAMPLE_TEXT, FGW, SAMPLE_TEXT, FGB, SAMPLE_TEXT, RESET);
+    println!("  Blue:             {}{}    {}{}    {}{}{}", bg::bright::BLUE,    SAMPLE_TEXT, FGW, SAMPLE_TEXT, FGB, SAMPLE_TEXT, RESET);
+    println!("  Magenta:          {}{}    {}{}    {}{}{}", bg::bright::MAGENTA, SAMPLE_TEXT, FGW, SAMPLE_TEXT, FGB, SAMPLE_TEXT, RESET);
+    println!("  Cyan:             {}{}    {}{}    {}{}{}", bg::bright::CYAN,    SAMPLE_TEXT, FGW, SAMPLE_TEXT, FGB, SAMPLE_TEXT, RESET);
+    println!("  White:            {}{}    {}{}    {}{}{}", bg::bright::WHITE,   SAMPLE_TEXT, FGW, SAMPLE_TEXT, FGB, SAMPLE_TEXT, RESET);
 
     println!("Misc:");
     println!("  Framed:           {}{}{}", misc::FRAMED,    SAMPLE_TEXT, RESET);
