@@ -34,6 +34,7 @@ fn main() {
     println!("  Double-underline: {}{}{}", effects::DBL_UNDERLINE, SAMPLE_TEXT, RESET);
 
     println!("Basic foreground colours:");
+    println!("                    bg normal       bg black        bg white");
     println!("  Black:            {}{}    {}{}{}    {}{}{}", fg::BLACK,   SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
     println!("  Red:              {}{}    {}{}{}    {}{}{}", fg::RED,     SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
     println!("  Green:            {}{}    {}{}{}    {}{}{}", fg::GREEN,   SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
@@ -44,6 +45,7 @@ fn main() {
     println!("  White:            {}{}    {}{}{}    {}{}{}", fg::WHITE,   SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
 
     println!("Basic foreground colours - bright:");
+    println!("                    bg normal       bg black        bg white");
     println!("  Black:            {}{}    {}{}{}    {}{}{}", fg::bright::BLACK,   SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
     println!("  Red:              {}{}    {}{}{}    {}{}{}", fg::bright::RED,     SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
     println!("  Green:            {}{}    {}{}{}    {}{}{}", fg::bright::GREEN,   SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
@@ -54,6 +56,7 @@ fn main() {
     println!("  White:            {}{}    {}{}{}    {}{}{}", fg::bright::WHITE,   SAMPLE_TEXT, bg::BLACK, SAMPLE_TEXT, RESET_BG, bg::WHITE, SAMPLE_TEXT, RESET);
 
     println!("Basic background colours:");
+    println!("                    fg normal       fg black        fg white");
     println!("  Black:            {}{}    {}{}    {}{}{}", bg::BLACK,   SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
     println!("  Red:              {}{}    {}{}    {}{}{}", bg::RED,     SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
     println!("  Green:            {}{}    {}{}    {}{}{}", bg::GREEN,   SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
@@ -64,6 +67,7 @@ fn main() {
     println!("  White:            {}{}    {}{}    {}{}{}", bg::WHITE,   SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
 
     println!("Basic background colours - bright:");
+    println!("                    fg normal       fg black        fg white");
     println!("  Black:            {}{}    {}{}    {}{}{}", bg::bright::BLACK,   SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
     println!("  Red:              {}{}    {}{}    {}{}{}", bg::bright::RED,     SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
     println!("  Green:            {}{}    {}{}    {}{}{}", bg::bright::GREEN,   SAMPLE_TEXT, fg::BLACK, SAMPLE_TEXT, fg::WHITE, SAMPLE_TEXT, RESET);
