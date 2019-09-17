@@ -90,11 +90,11 @@
 //!
 //! Before we continue, understand that the effects specified are applied in sequence and remain in
 //! effect until changed or reset by a subsequent code in the sequence or by such a code in a later
-//! sequence. Hence in the example given shortly, a sequence is used to enable red text, then some
-//! text to which this applies is output, then a new sequence that issues the reset-all code is
-//! used. There are codes available for removing specific effects or resetting just foreground or
-//! background-highlight colours. There is also the catch-all code `0` for resetting everything to
-//! normal.
+//! sequence. Hence in the example given earlier, a sequence is used to enable red text, this is
+//! followed by some text to which this formatting applies, then a new sequence is given that issues
+//! the reset-all code. There are codes available for removing specific effects or resetting just
+//! foreground or background-highlight colours. There is also the catch-all code `0` for resetting
+//! everything to normal.
 //!
 //! ## Macro construction
 //!
