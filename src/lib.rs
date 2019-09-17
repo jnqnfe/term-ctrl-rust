@@ -147,12 +147,10 @@
 //!
 //! Code zero (`0`) resets all effects and colour selections to defaults.
 //!
-//! Note that while code `21` has an additional form of underline effect, codes `22`-`29` provide
-//! codes for removing specific effects, with `22` removing both bold and dim effects together,
-//! otherwise the last digit corresponds to the effect removed (e.g. `3` and `23` relate to italic).
+//! Note that codes `22`-`25` and `27`-`29` provide for removing specific effects.
 //!
-//! Codes `10-19` are used for font selection. Code `10` selects the primary (default) font. Codes
-//! `11`-`19` select alternate fonts 1-9.
+//! Codes `10-19` (unlisted above) are used for font selection. Code `10` selects the primary
+//! (default) font. Codes `11`-`19` select alternate fonts 1-9.
 //!
 //! ### Basic colours
 //!
