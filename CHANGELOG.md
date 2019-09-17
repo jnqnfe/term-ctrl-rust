@@ -1,4 +1,4 @@
-# <unreleased>
+# 0.6.0 (September 17th, 2019)
 
  * Re-organised the predefines
  * Added various additional predefines
