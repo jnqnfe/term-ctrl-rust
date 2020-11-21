@@ -215,7 +215,7 @@
 //!  - [256-color chart][Xterm_256color_chart.svg]
 //!
 //! [support mod]: support/index.html
-//! [`seq`]: macro.seq.html
+//! [`seq`]: macro@seq!
 //! [Xterm_256color_chart.svg]: https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 //! [wikipedia_ANSI_escape_code_SGR]: https://en.wikipedia.org/wiki/ANSI_escape_code#SGR
 //! [wikipedia_Xterm]: https://en.wikipedia.org/wiki/Xterm
