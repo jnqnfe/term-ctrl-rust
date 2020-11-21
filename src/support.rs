@@ -15,7 +15,7 @@
 /// - On Windows, this gives an answer on the same principle, however even if returning `true` such
 ///   that we know we are connected to a terminal, this does not mean that the terminal actually
 ///   supports ANSI control sequences. Before Windows 10 you should assume not. On Windows 10+ you
-///   must use the [`enable_ansi_support`] to turn on support.
+///   must use the [`enable_ansi_support`] function to turn on support.
 ///
 /// [`enable_ansi_support`]: fn.enable_ansi_support.html
 #[inline(always)]
@@ -30,7 +30,7 @@ pub fn fmt_supported_stdout() -> bool {
 /// - On Windows, this gives an answer on the same principle, however even if returning `true` such
 ///   that we know we are connected to a terminal, this does not mean that the terminal actually
 ///   supports ANSI control sequences. Before Windows 10 you should assume not. On Windows 10+ you
-///   must use the [`enable_ansi_support`] to turn on support.
+///   must use the [`enable_ansi_support`] function to turn on support.
 ///
 /// [`enable_ansi_support`]: fn.enable_ansi_support.html
 #[inline(always)]
