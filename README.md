@@ -1,5 +1,5 @@
-term_ctrl
-========
+term-ctrl
+=========
 
 A small library for ANSI terminal output formatting assistance.
 
