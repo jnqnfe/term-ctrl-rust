@@ -1,4 +1,4 @@
-# [unreleased]
+# 0.7.2 (November 24th, 2020)
 
  * Fix mistake with macro link in previous changes
 
