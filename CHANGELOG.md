@@ -1,3 +1,10 @@
+# 0.7.0 (November 24th, 2020)
+
+ * Adjusted documentation to take advantage of the better link generation provided in the latest
+   rust compiler (version 1.48). This means that the minimum rust version needed is 1.48 to have
+   working links within the documentation, though the crate is still usable with older versions, so
+   the MSRV is not being bumped.
+
 # 0.6.1 (November 24th, 2020)
 
  * Trivial non-functional tweaks, not worth listing
