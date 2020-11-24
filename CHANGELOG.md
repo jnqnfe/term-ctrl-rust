@@ -1,3 +1,7 @@
+# 0.6.1 (November 24th, 2020)
+
+ * Trivial non-functional tweaks, not worth listing
+
 # 0.6.0 (September 17th, 2019)
 
  * Re-organised the predefines
