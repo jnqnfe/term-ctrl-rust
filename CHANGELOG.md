@@ -1,3 +1,7 @@
+# [unreleased]
+
+ * Fix mistake with macro link in previous changes
+
 # 0.7.1 (November 24th, 2020)
 
  * Previous change was incomplete
