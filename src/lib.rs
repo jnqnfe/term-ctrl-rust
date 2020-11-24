@@ -28,7 +28,7 @@
 //!
 //! There is no strict need to actually understand how to construct such control sequences to make
 //! use of the formatting they offer; many predefined sequences are available for your use in the
-//! [predefined mod](predefined/index.html).
+//! [predefined mod].
 //!
 //! To make use of these simply inject them into the right points of a to-be-printed string via
 //! format arguments, as demonstrated below. Remember not to forget to make use of a reset after the
@@ -214,7 +214,8 @@
 //!  - [Xterm control sequence documentation][xterm_ctlseqs]
 //!  - [256-color chart][Xterm_256color_chart.svg]
 //!
-//! [support mod]: support/index.html
+//! [support mod]: mod@crate::support
+//! [predefined mod]: mod@crate::predefined
 //! [`seq`]: macro@seq!
 //! [Xterm_256color_chart.svg]: https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 //! [wikipedia_ANSI_escape_code_SGR]: https://en.wikipedia.org/wiki/ANSI_escape_code#SGR

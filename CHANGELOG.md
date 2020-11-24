@@ -1,3 +1,7 @@
+# [unreleased]
+
+ * Previous change was incomplete
+
 # 0.7.0 (November 24th, 2020)
 
  * Adjusted documentation to take advantage of the better link generation provided in the latest
