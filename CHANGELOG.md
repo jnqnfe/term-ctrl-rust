@@ -1,4 +1,4 @@
-# [unreleased]
+# 0.7.1 (November 24th, 2020)
 
  * Previous change was incomplete
 
