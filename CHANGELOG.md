@@ -1,4 +1,4 @@
-# [unreleased]
+# 0.7.3 (November 24th, 2020)
 
  * Trying again to fix mistake with macro link in previous changes (relying upon docs.rs processing
    of new crates to test the change since my distro only has rustc v1.47 for now).
