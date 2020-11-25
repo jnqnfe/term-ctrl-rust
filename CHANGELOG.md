@@ -1,3 +1,7 @@
+# [unreleased]
+
+ * Another attempt to fix the macro link
+
 # 0.7.3 (November 24th, 2020)
 
  * Trying again to fix mistake with macro link in previous changes (relying upon docs.rs processing
