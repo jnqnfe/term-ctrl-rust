@@ -1,3 +1,7 @@
+# [unreleased]
+
+ * Fixed deprecated license attribute syntax
+
 # 0.7.4 (November 25th, 2020)
 
  * Another attempt to fix the macro link
