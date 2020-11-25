@@ -1,4 +1,4 @@
-# [unreleased]
+# 0.7.5 (November 25th, 2020)
 
  * Fixed deprecated license attribute syntax
 
