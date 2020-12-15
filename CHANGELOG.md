@@ -1,3 +1,7 @@
+# 0.7.6 (December 15th, 2020)
+
+ * Moved CI to github actions
+
 # 0.7.5 (November 25th, 2020)
 
  * Fixed deprecated license attribute syntax
