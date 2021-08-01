@@ -1,16 +1,15 @@
 [package]
+edition = "2018"
 name = "term-ctrl"
 version = "0.7.7"
 authors = ["Lyndon Brown <jnqnfe@gmail.com>"]
 license = "MIT OR Apache-2.0"
-description = """
-ANSI terminal text formatting assistant
-"""
+readme = "README.md"
+description = "ANSI terminal text formatting assistant"
 keywords = ["terminal", "console", "ansi"]
 homepage = "https://github.com/jnqnfe/term-ctrl-rust"
 repository = "https://github.com/jnqnfe/term-ctrl-rust"
-readme = "README.md"
-edition = "2018"
+exclude = ["README.md", ".github/*"]
 
 [dependencies]
 atty = "0.2"
