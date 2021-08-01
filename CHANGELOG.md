@@ -1,3 +1,8 @@
+# 0.7.8 (August 1st, 2021)
+
+ * Fixed CI failures, finally
+ * Excluded the CI config from being bundled in the crate
+
 # 0.7.7 (August 1st, 2021)
 
  * Actually drop the travis config
