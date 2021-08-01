@@ -1,3 +1,8 @@
+# 0.7.7 (August 1st, 2021)
+
+ * Actually drop the travis config
+ * Add scheduled CI run
+
 # 0.7.6 (December 15th, 2020)
 
  * Moved CI to github actions
