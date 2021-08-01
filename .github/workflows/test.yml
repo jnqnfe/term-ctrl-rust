@@ -48,11 +48,23 @@ jobs:
       - name: Run tests
         if: ${{ runner.os == 'Windows' }}
         run: cargo test --verbose
-      # Unix steps, for which the isatty() check doesn't work, so we must trick it by using the
+      # Linux steps, for which the isatty() check doesn't work, so we must trick it by using the
       # `script` command
       - name: Check building (cargo check)
-        if: ${{ runner.os != 'Windows' }}
+        if: ${{ runner.os == 'Linux' }}
         run: script -qec 'cargo check --verbose' /dev/null
       - name: Run tests
-        if: ${{ runner.os != 'Windows' }}
+        if: ${{ runner.os == 'Linux' }}
         run: script -qec 'cargo test --verbose' /dev/null
+      # macOS steps, for which we need a similar trick as for Linux, but the options available and
+      # order of parameters for the macOS version of the `script` command differs from Linux. There
+      # seems to be no equivalent to the `-e` (`--return`) Linux option.
+      #- name: Show manpage
+      #  if: ${{ runner.os == 'macOS' }}
+      #  run: man 1 script
+      - name: Check building (cargo check)
+        if: ${{ runner.os == 'macOS' }}
+        run: script -q /dev/null cargo check --verbose
+      - name: Run tests
+        if: ${{ runner.os == 'macOS' }}
+        run: script -q /dev/null cargo test --verbose
