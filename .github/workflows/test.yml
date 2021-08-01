@@ -41,7 +41,18 @@ jobs:
           profile: minimal
           toolchain: ${{ matrix.rustc }}
           override: true
+      # Windows steps, for which the tty check just seems to work
       - name: Check building (cargo check)
+        if: ${{ runner.os == 'Windows' }}
         run: cargo check --verbose
       - name: Run tests
+        if: ${{ runner.os == 'Windows' }}
         run: cargo test --verbose
+      # Unix steps, for which the isatty() check doesn't work, so we must trick it by using the
+      # `script` command
+      - name: Check building (cargo check)
+        if: ${{ runner.os != 'Windows' }}
+        run: script -qec 'cargo check --verbose' /dev/null
+      - name: Run tests
+        if: ${{ runner.os != 'Windows' }}
+        run: script -qec 'cargo test --verbose' /dev/null
